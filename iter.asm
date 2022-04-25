@@ -9,6 +9,7 @@ section .text
 	global main
 	extern printf
 	extern scanf
+	extern malloc
 
 ; system
 %macro _start 0
@@ -55,6 +56,13 @@ section .text
 	pop ebx
 	pop eax
 	mov [%1 + eax * 4], ebx
+%endmacro
+
+%macro _heaparr 1
+	shl dword [esp], 2
+	call malloc
+	add esp, 4
+	mov [%1], eax
 %endmacro
 
 ; (a)
@@ -119,12 +127,14 @@ section .text
 	or [esp], ebx
 %endmacro
 
-%macro _lsh 0
-
+%macro _shl 0
+	pop ecx
+	shl dword [esp], cl
 %endmacro
 
-%macro _rsh 0
-
+%macro _shr 0
+	pop ecx
+	shr dword [esp], cl
 %endmacro
 
 ; (a, b, c)
@@ -163,7 +173,11 @@ section .text
 %endmacro
 
 %macro _push 0
-
+	pop ebx
+	pop eax
+	push ebx
+	push eax
+	push ebx
 %endmacro
 
 %macro _drop 0

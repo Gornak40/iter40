@@ -12,7 +12,7 @@
 - ```*/, *%``` - push(pop_3 ^^ pop_2 ^^ pop_1)
 - ```\copy``` - push(top_1)
 - ```\prev``` - push(top_2)
-- ```\push```
+- ```\push``` - push(pop_1), push(pop_2), push(pop_1)
 - ```\swap``` - swap(top_1, top_2)
 - ```\drop``` - pop_1
 - ```\post``` - print(pop_1)
@@ -24,5 +24,8 @@
 - ```#<function> <commands> ;``` - declare function
 - ```..<module>``` - include module
 - ```\iter <commands> ;``` - while true
+- ```\halt``` - break
+- ```\jump``` - continue
 - ```<, <=, >, >=, ==, !=, !, ? <commands> ;``` - if pop_2 ** pop_1
 - ```\else <commands> ;``` - else
+- ```\<function>``` - function()
