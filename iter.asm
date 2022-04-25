@@ -4,13 +4,13 @@ section .data
 
 section .bss
 	_stackptr: resd 1
-	arr: resd 10
 
 section .text
 	global main
 	extern printf
 	extern scanf
 
+; system
 %macro _start 0
 	mov [_stackptr], esp
 %endmacro
@@ -20,11 +20,12 @@ section .text
 	xor eax, eax
 %endmacro
 
+; get
 %macro _num 1
 	push %1
 %endmacro
 
-%macro _var 1
+%macro _getvar 1
 	push dword [%1]
 %endmacro
 
@@ -32,11 +33,44 @@ section .text
 	push dword [%1]
 %endmacro
 
-%macro _get 1
+%macro _getarr 1
 	pop eax
 	push dword [%1 + eax * 4]
 %endmacro
 
+%macro _read 0
+	sub esp, 4
+	mov [esp], esp
+	push dword _formatin
+	call scanf
+	add esp, 4
+%endmacro
+
+; set
+%macro _setvar 1
+	pop dword [%1]
+%endmacro
+
+%macro _setarr 1
+	pop ebx
+	pop eax
+	mov [%1 + eax * 4], ebx
+%endmacro
+
+; (a)
+%macro _inc 0
+	inc dword [esp]
+%endmacro
+
+%macro _dec 0
+	dec dword [esp]
+%endmacro
+
+%macro _not 0
+	not dword [esp]
+%endmacro
+
+; (a, b)
 %macro _add 0
 	pop ebx
 	add [esp], ebx
@@ -85,52 +119,40 @@ section .text
 	or [esp], ebx
 %endmacro
 
-%macro _shl 0
-	pop ebx
-	shl [esp], ebx
+%macro _lsh 0
+
 %endmacro
 
-%macro _shr 0
-	pop ebx
-	shr [esp], ebx
+%macro _rsh 0
+
 %endmacro
 
-%macro _inc 0
-	inc dword [esp]
-%endmacro
-
-%macro _dec 0
-	dec dword [esp]
-%endmacro
-
-%macro _read 0
-	sub esp, 4
-	mov [esp], esp
-	push dword _formatin
-	call scanf
-	add esp, 4
-%endmacro
-
-%macro _post 0
-	push dword _formatout
-	call printf
-	add esp, 8
-%endmacro
-
-%macro _cmp 0
+; (a, b, c)
+%macro _muldiv 0
+	pop ecx
 	pop ebx
 	pop eax
-	cmp eax, ebx
+	imul ebx
+	idiv ecx
+	push eax
 %endmacro
 
-%macro _set 1
+%macro _mulmod 0
+	pop ecx
 	pop ebx
 	pop eax
-	mov [%1 + eax * 4], ebx
+	imul ebx
+	idiv ecx
+	push edx
 %endmacro
 
+; stack
 %macro _copy 0
-	push [esp]
+	push dword [esp]
+%endmacro
+
+%macro _prev 0
+	push dword [esp+4]
 %endmacro
 
 %macro _swap 0
@@ -140,12 +162,28 @@ section .text
 	push eax
 %endmacro
 
+%macro _push 0
+
+%endmacro
+
+%macro _drop 0
+	add esp, 4
+%endmacro
+
+%macro _post 0
+	push dword _formatout
+	call printf
+	add esp, 8
+%endmacro
+
+; conditions
+%macro _cmp 0
+	pop ebx
+	pop eax
+	cmp eax, ebx
+%endmacro
+
 main:
 	_start
-
-	_read
-	_read
-;	_shr
-	_post
 
 	_exit
