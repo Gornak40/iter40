@@ -2,31 +2,63 @@ from rply import LexerGenerator
 
 vartemp = r'[a-zA-Z\d_]+'
 
+tokens = {
+	'READ': r'^\\read$',
+	'COPY': r'^\\copy$',
+	'PUSH': r'^\\push$',
+	'SWAP': r'^\\swap$',
+	'DROP': r'^\\drop$',
+	'POST': r'^\\post$',
+	'ITER': r'^\\iter$',
+	'HALT': r'^\\halt$',
+	'ELSE': r'^\\else$',
+	'FUNC': rf'^\\{vartemp}$',
+
+	'SEMI': r'^;$',
+	'SETFUNC': rf'^#{vartemp}$',
+
+	'GETVAR': rf'{vartemp}$',
+	'SETVAR': rf'^={vartemp}$',
+	'SETCONST': rf'^:{vartemp}$',
+
+	'GETARR': rf'^\[\]{vartemp}$',
+	'SETARR': r'^\{\}' + vartemp + r'$',
+	'HEAPARR': rf'^\${vartemp}$',
+	'STATARR': rf'^@{vartemp}$',
+
+	'INC': r'^\+\+$',
+	'DEC': r'^\-\-$',
+	'NOT': r'^~$',
+
+	'ADD': r'^\+$',
+	'SUB': r'^-$',
+	'MUL': r'^\*$',
+	'DIV': r'^/$',
+	'MOD': r'^%$',
+	'XOR': r'^\^$',
+	'OR': r'^\|$',
+	'AND': r'^&$',
+	'SHL': r'^<<$',
+	'SHR': r'^>>$',
+
+	'MULDIV': r'^\*/$',
+	'MULMOD': r'^\*%$',
+
+	'JNE0': r'^\?$',
+	'JE0': r'^!$',
+
+	'JL': r'^<$',
+	'JLE': r'^<=$',
+	'JG': r'^>$',
+	'JGE': r'^>=$',
+	'JE': r'^==$',
+	'JNE': r'^!=$',
+}
+
 lg = LexerGenerator()
-
-lg.add('READ', r'^\\read$')
-lg.add('COPY', r'^\\copy$')
-lg.add('PUSH', r'^\\push$')
-lg.add('SWAP', r'^\\swap$')
-lg.add('DROP', r'^\\drop$')
-lg.add('POST', r'^\\post$')
-lg.add('ITER', r'^\\iter$')
-lg.add('HALT', r'^\\halt$')
-lg.add('ELSE', r'^\\else$')
-lg.add('FUNC', rf'^\\{vartemp}$')
-
-lg.add('NUM', r'^\-?\d+$')
-
-lg.add('SETVAR', rf'^\={vartemp}$')
-lg.add('GETVAR', rf'{vartemp}$')
-
-lg.add('GETARR', rf'^\[\]{vartemp}$')
-lg.add('SETARR', r'^\{\}' + vartemp + r'$')
-lg.add('HEAPARR', rf'^\${vartemp}$')
-lg.add('STATARR', rf'^\@{vartemp}$')
-
-lg.add('SEMI', r'^\;$')
-lg.add('TRASH', r'.')
-
 lg.ignore(r'\s')
+
+for name, reg in tokens.items():
+	lg.add(name, reg)
+
 lexer = lg.build()

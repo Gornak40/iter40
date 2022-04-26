@@ -8,8 +8,6 @@ from lexer import lexer
 def main(source):
 	for token in source.read().split():
 		print(*lexer.lex(token))
-#	tokens = lexer.lex(source.read())
-#	print(*tokens, sep='\n')
 
 
 if __name__ == '__main__':

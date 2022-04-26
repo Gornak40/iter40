@@ -30,7 +30,7 @@ section .text
 	push dword [%1]
 %endmacro
 
-%macro _const 1
+%macro _getconst 1
 	push dword [%1]
 %endmacro
 
