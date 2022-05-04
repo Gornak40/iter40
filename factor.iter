@@ -1,0 +1,14 @@
+#factor
+	=n 2 =k
+	\iter
+		k k * n > \halt ;
+		\iter
+			n k % ? \halt ;
+			n k / =n
+			k \post
+		;
+	;
+	n 1 != n \post ;
+;
+
+\read \factor

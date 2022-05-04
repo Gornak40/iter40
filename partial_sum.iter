@@ -1,0 +1,21 @@
+\read =n n $arr n ++ $ps
+0 0 {}ps 0 =i
+\iter
+	i n == \halt ;
+	i \read {}arr
+	i ++ =i
+;
+
+0 =i
+\iter
+	i n == \halt ;
+	i ++ i []arr i []ps + {}ps
+;
+
+\read =t
+\iter
+	t ! \halt ;
+	\read -- =l \read =r
+	r []ps l []ps - \post
+	t -- =t
+;

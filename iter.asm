@@ -3,7 +3,7 @@ section .data
 	_formatout: db "%d", 10, 0
 
 section .bss
-	_stackptr: resd 1
+
 
 section .text
 	global main
@@ -13,11 +13,11 @@ section .text
 
 ; system
 %macro _start 0
-	mov [_stackptr], esp
+	mov ebp, esp
 %endmacro
 
 %macro _exit 0
-	mov esp, [_stackptr]
+	mov esp, ebp
 	xor eax, eax
 %endmacro
 
@@ -199,5 +199,5 @@ section .text
 
 main:
 	_start
-
+	
 	_exit
