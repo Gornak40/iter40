@@ -1,2 +1,3 @@
 OPEN = {'JNE0', 'JE0', 'JL', 'JLE', 'JG', 'JGE', 'JE', 'JNE', 'ELSE', 'ITER', 'SETFUNC'}
 CONSTVAL = {'GETCONST', 'NUM'}
+BSS = {'SETVAR', 'HEAPARR'}

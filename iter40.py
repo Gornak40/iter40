@@ -18,7 +18,8 @@ class Main:
 	def __init__(self, source):
 		self.lex(source)
 		self.check_balance()
-		self.set_consts()
+		self.set_assign()
+		self.set_bss()
 
 		self.build('main')
 
@@ -53,12 +54,24 @@ class Main:
 		if balance:
 			balance_error()
 
-	def set_consts(self):
+	def set_assign(self):
 		for ptoken, token in zip(self.tokens, self.tokens[1:]):
 			if token.gettokentype() == 'SETCONST':
 				if ptoken.gettokentype() not in CONSTVAL:
 					const_error(ptoken)
 				self.assign.append(f'%assign {token.getstr()[1:]} {ptoken.getstr()}')
+				ptoken = token = None
+
+	def set_bss(self):
+		for ptoken, token in zip(self.tokens, self.tokens[1:]):
+			if token.gettokentype() in BSS:
+				self.bss.append(f'{token.getstr()[1:]}: resd 1')
+			elif token.gettokentype() == 'STATARR':
+				if ptoken.gettokentype() not in CONSTVAL:
+					const_error(ptoken)
+				self.bss.append(f'{token.getstr()[1:]}: resd {ptoken.getstr()}')
+				ptoken = token = None
+		self.bss = list(set(self.bss))
 
 
 if __name__ == '__main__':

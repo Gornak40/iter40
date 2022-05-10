@@ -7,3 +7,5 @@ a b * \post
 a b / \post
 a b % \post
 a b SUGOMA *%
+a $arr b $brr
+SUGOMA @crr
