@@ -1,6 +1,8 @@
 from rply import LexerGenerator
+from rply.errors import LexingError
 
-vartemp = r'[a-zA-Z\d_]+'
+vartemp = r'[a-z\d_]+'
+consttemp = r'[A-Z]+'
 
 tokens = {
 	'READ': r'\\read',
@@ -14,13 +16,14 @@ tokens = {
 	'ELSE': r'\\else',
 	'FUNC': rf'\\{vartemp}',
 
-	'SEMI': r';',
+	'END': r'\\',
 	'SETFUNC': rf'#{vartemp}',
 
 	'NUM': r'-?\d+',
 	'GETVAR': rf'{vartemp}',
+	'GETCONST': rf'{consttemp}',
 	'SETVAR': rf'={vartemp}',
-	'SETCONST': rf':{vartemp}',
+	'SETCONST': rf'={consttemp}',
 
 	'GETARR': rf'\[\]{vartemp}',
 	'SETARR': r'\{\}' + vartemp,

@@ -1,0 +1,9 @@
+\read =a \read =b
+a \post 5000 =AMOGUS
+a b + \post
+a b - \post
+AMOGUS =SUGOMA
+a b * \post
+a b / \post
+a b % \post
+a b SUGOMA *%

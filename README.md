@@ -21,11 +21,11 @@
 - ```{}<array>``` - array\[pop_2\] = pop_1
 - ```$<array>``` - assign heap array\[pop_1\]
 - ```@<array>``` - assign static array\[pop_1\]
-- ```#<function> <commands> ;``` - declare function
+- ```#<function> <commands> \``` - declare function
 - ```..<module>``` - include module
-- ```\iter <commands> ;``` - while true
+- ```\iter <commands> \``` - while true
 - ```\halt``` - break
 - ```\jump``` - continue
-- ```<, <=, >, >=, ==, !=, !, ? <commands> ;``` - if pop_2 ** pop_1
-- ```\else <commands> ;``` - else
+- ```<, <=, >, >=, ==, !=, !, ? <commands> \``` - if pop_2 ** pop_1
+- ```\else <commands> \``` - else
 - ```\<function>``` - function()

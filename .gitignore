@@ -1,5 +1,6 @@
 main
 main.o
+main.asm
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
