@@ -49,10 +49,16 @@ add esp, 4
 pop dword [%1]
 %endmacro
 
-%macro @setarr 1
+%macro @lsetarr 1
 pop ebx
 pop eax
 mov [%1 + eax * 4], ebx
+%endmacro
+
+%macro @rsetarr 1
+pop ebx
+pop eax
+mov [%1 + ebx * 4], eax
 %endmacro
 
 %macro @heaparr 1

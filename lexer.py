@@ -18,6 +18,8 @@ tokens = {
 
 	'END': r'\\',
 	'SETFUNC': rf'#{vartemp}',
+	'INCLUDE': rf'\.\.{vartemp}',
+	'COMMENT': r'`.+',
 
 	'NUM': r'-?\d+',
 	'GETVAR': rf'{vartemp}',
@@ -26,7 +28,8 @@ tokens = {
 	'SETCONST': rf'={consttemp}',
 
 	'GETARR': rf'\[\]{vartemp}',
-	'SETARR': r'\{\}' + vartemp,
+	'LSETARR': r'\{\}' + vartemp,
+	'RSETARR': vartemp + r'\{\}',
 	'HEAPARR': rf'\${vartemp}',
 	'STATARR': rf'@{vartemp}',
 

@@ -1,4 +1,5 @@
-\read =a \read =b
+..amogus
+\read =a \read =b `read_values
 a \post 5000 =AMOGUS
 a b + \post
 a b - \post
@@ -9,3 +10,5 @@ a b % \post
 a b SUGOMA *%
 a $arr b $brr
 SUGOMA @crr
+0 6 {}arr
+6 0 arr{}

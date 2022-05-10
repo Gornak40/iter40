@@ -1,5 +1,5 @@
 #!venv/bin/python
-from click import command, argument, File
+from click import command, argument, File, option, Path
 from lexer import lexer, LexingError
 from pprint import pprint
 from errors import *
@@ -9,22 +9,23 @@ from os import system
 
 @command(help='ITER40 compiler made by Gornak40.')
 @argument('source', type=File())
+@option('--outname', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Output file name.')
 class Main:
 	tokens = []
 	assign = []
 	bss = []
 	text = []
 
-	def __init__(self, source):
+	def __init__(self, source, outname):
 		self.lex(source)
 		self.check_balance()
 		self.set_assign()
 		self.set_bss()
 
-		self.build('main')
+		self.build(outname)
 
-	def build(self, name):
-		with open(f'{name}.asm', 'w') as fout:
+	def build(self, outname):
+		with open(f'{outname}.asm', 'w') as fout:
 			print(*self.assign, sep='\n', file=fout)
 			print('section .bss', file=fout)
 			print(*self.bss, sep='\n', file=fout)
@@ -32,7 +33,7 @@ class Main:
 				print(fin.read(), file=fout)
 			print(*self.text, sep='\n', file=fout)
 			print('@exit', file=fout)
-		system(f'nasm -f elf32 {name}.asm -o {name}.o && gcc -m32 {name}.o -o {name}')
+		system(f'nasm -f elf32 {outname}.asm -o {outname}.o && gcc -m32 {outname}.o -o {outname}')
 
 
 	def lex(self, source):
