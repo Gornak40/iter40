@@ -36,6 +36,8 @@ class Main:
 			print(*self.bss, sep='\n', file=fout)
 			with open('iter.asm') as fin:
 				print(fin.read(), file=fout)
+			print('main:', file=fout)
+			print('@start', file=fout)
 			print(*self.text, sep='\n', file=fout)
 			print('@exit', file=fout)
 		system(f'nasm -f elf32 {outname}.asm -o {outname}.o && gcc -m32 {outname}.o -o {outname}')
@@ -88,14 +90,29 @@ class Main:
 			token = self.tokens[self.ptr]
 			if self.ptr in self.ban or token.gettokentype() == 'COMMENT':
 				self.ptr += 1
+			elif token.gettokentype() == 'END':
+				self.ptr += 1
+				return
 			elif token.gettokentype() in COND:
 				# TODO
 				self.ptr += 1
 			elif token.gettokentype() == 'ITER':
 				# TODO
 				self.ptr += 1
-			elif token.gettokentype() == 'SETFUNC':
+			elif token.gettokentype() == 'HALT':
 				# TODO
+				self.ptr += 1
+			elif token.gettokentype() == 'JUMP':
+				# TODO
+				self.ptr += 1
+			elif token.gettokentype() == 'SETFUNC':
+				yield f'%macro @{token.getstr()[1:]} 0'
+				self.ptr += 1
+				for line in self.set_text():
+					yield line
+				yield f'%endmacro'
+			elif token.gettokentype() == 'FUNC':
+				yield f'@{token.getstr()[1:]}'
 				self.ptr += 1
 			elif token.gettokentype() in PARAM:
 				value = str().join(filter(lambda x: x in VAR, token.getstr()))

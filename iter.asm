@@ -199,6 +199,3 @@ pop ebx
 pop eax
 cmp eax, ebx
 %endmacro
-
-main:
-@start

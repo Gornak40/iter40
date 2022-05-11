@@ -10,4 +10,5 @@ a b SUGOMA *%
 a $arr b $brr
 SUGOMA @crr
 0 6 {}arr
-6 0 arr{}
+6 1 arr{}
+1 []arr \post
