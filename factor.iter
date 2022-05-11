@@ -1,14 +1,15 @@
 #factor
 	=n 2 =k
 	\iter
-		k k * n > \halt ;
-		\iter
-			n k % ? \halt ;
-			n k / =n
+		k k * n > \halt \
+		n k % !
 			k \post
-		;
-	;
-	n 1 != n \post ;
-;
+			n k / =n
+			\jump
+		\
+		k ++ =k
+	\
+	n 1 != n \post \
+\
 
 \read \factor

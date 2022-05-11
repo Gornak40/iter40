@@ -13,6 +13,7 @@ tokens = {
 	'POST': r'\\post',
 	'ITER': r'\\iter',
 	'HALT': r'\\halt',
+	'JUMP': r'\\jump',
 	'ELSE': r'\\else',
 	'FUNC': rf'\\{vartemp}',
 

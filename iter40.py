@@ -89,7 +89,7 @@ class Main:
 				self.ban |= {i, i + 1}
 		self.bss = list(set(self.bss))
 
-	def set_text(self):
+	def set_text(self, iter_cur_label=None, iter_end_label=None):
 		while self.ptr < len(self.tokens):
 			token = self.tokens[self.ptr]
 			if self.ptr in self.ban or token.gettokentype() == 'COMMENT':
@@ -100,13 +100,13 @@ class Main:
 			elif token.gettokentype() in COND:
 				yield ('@cmp0' if token.gettokentype()[-1] == '0' else '@cmp')
 				cur_label = self.get_label()
-				yield f'{str().join(filter(str.isalpha, token.gettokentype())).lower()} {cur_label}'
 				end_label = self.get_label()
+				yield f'{str().join(filter(str.isalpha, token.gettokentype())).lower()} {cur_label}'
 				self.ptr += 1
-				lines = list(self.set_text())
+				lines = list(self.set_text(iter_cur_label, iter_end_label))
 				if self.ptr < len(self.tokens) and self.tokens[self.ptr].gettokentype() == 'ELSE':
 					self.ptr += 1
-					for line in self.set_text():
+					for line in self.set_text(iter_cur_label, iter_end_label):
 						yield line
 				yield f'jmp {end_label}'
 				yield f'{cur_label}:'
@@ -114,18 +114,24 @@ class Main:
 					yield line
 				yield f'{end_label}:'
 			elif token.gettokentype() == 'ITER':
-				# TODO
+				cur_label = self.get_label()
+				end_label = self.get_label()
+				yield f'{cur_label}:'
 				self.ptr += 1
+				for line in self.set_text(cur_label, end_label):
+					yield line
+				yield f'jmp {cur_label}'
+				yield f'{end_label}:'
 			elif token.gettokentype() == 'HALT':
-				# TODO
+				yield f'jmp {iter_end_label}'
 				self.ptr += 1
 			elif token.gettokentype() == 'JUMP':
-				# TODO
+				yield f'jmp {iter_cur_label}'
 				self.ptr += 1
 			elif token.gettokentype() == 'SETFUNC':
 				yield f'%macro @{token.getstr()[1:]} 0'
 				self.ptr += 1
-				for line in self.set_text():
+				for line in self.set_text(iter_cur_label, iter_end_label):
 					yield line
 				yield f'%endmacro'
 			elif token.gettokentype() == 'FUNC':
