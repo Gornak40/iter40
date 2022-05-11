@@ -19,6 +19,10 @@ class Main:
 	label = 0
 	ban = set()
 
+	def get_label(self):
+		self.label += 1
+		return f'@{self.label - 1}'
+
 	def __init__(self, source, outname):
 		self.lex(source)
 		self.check_balance()
@@ -94,8 +98,21 @@ class Main:
 				self.ptr += 1
 				return
 			elif token.gettokentype() in COND:
-				# TODO
+				yield ('@cmp0' if token.gettokentype()[-1] == '0' else '@cmp')
+				cur_label = self.get_label()
+				yield f'{str().join(filter(str.isalpha, token.gettokentype())).lower()} {cur_label}'
+				end_label = self.get_label()
 				self.ptr += 1
+				lines = list(self.set_text())
+				if self.ptr < len(self.tokens) and self.tokens[self.ptr].gettokentype() == 'ELSE':
+					self.ptr += 1
+					for line in self.set_text():
+						yield line
+				yield f'jmp {end_label}'
+				yield f'{cur_label}:'
+				for line in lines:
+					yield line
+				yield f'{end_label}:'
 			elif token.gettokentype() == 'ITER':
 				# TODO
 				self.ptr += 1

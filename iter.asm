@@ -199,3 +199,8 @@ pop ebx
 pop eax
 cmp eax, ebx
 %endmacro
+
+%macro @cmp0 0
+pop eax
+cmp eax, 0
+%endmacro

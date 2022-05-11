@@ -1,0 +1,8 @@
+\read =a \read =b
+a b <=
+	a b == 101 \post \
+	\else
+		a 1 & ? 777 \post \
+	\
+\
+\else 666 \post \
