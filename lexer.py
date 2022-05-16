@@ -16,6 +16,8 @@ tokens = {
 	'JUMP': r'\\jump',
 	'ELSE': r'\\else',
 	'BACK': r'\\back',
+	'MSET': r'\\mset',
+	'MCPY': r'\\mcpy',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 

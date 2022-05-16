@@ -16,6 +16,8 @@
 - ```\swap``` - swap(top_1, top_2)
 - ```\drop``` - pop_1
 - ```\post``` - print(pop_1)
+- ```\mset``` - memset(pop_1, pop_2, pop_3 * sizeof(int))
+- ```\mcpy``` - memcpy(pop_1, pop_2, pop_3 * sizeof(int))
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1
