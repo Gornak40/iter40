@@ -34,7 +34,8 @@ push %1
 
 %macro @getarr 1
 pop eax
-push dword [%1 + eax * 4]
+mov ecx, dword [%1]
+push dword [ecx + eax * 4]
 %endmacro
 
 %macro @read 0
@@ -57,13 +58,15 @@ pop dword [%1]
 %macro @lsetarr 1
 pop ebx
 pop eax
-mov [%1 + eax * 4], ebx
+mov ecx, dword [%1]
+mov [ecx + eax * 4], ebx
 %endmacro
 
 %macro @rsetarr 1
 pop ebx
 pop eax
-mov [%1 + ebx * 4], eax
+mov ecx, dword [%1]
+mov [ecx + ebx * 4], eax
 %endmacro
 
 %macro @heaparr 1

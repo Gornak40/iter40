@@ -35,7 +35,7 @@ tokens = {
 	'GETARR': rf'\[\]{vartemp}',
 	'LSETARR': r'\{\}' + vartemp,
 	'RSETARR': vartemp + r'\{\}',
-#	'HEAPARR': rf'\${vartemp}',
+	'HEAPARR': rf'\${vartemp}',
 	'STATARR': rf'@{vartemp}',
 
 	'INC': r'\+\+',

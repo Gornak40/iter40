@@ -17,6 +17,7 @@ class Main:
 	assign = list()
 	bss = list()
 	sunc = list()
+	stat = list()
 	text = list()
 	local = list()
 	ptr = 0
@@ -47,6 +48,7 @@ class Main:
 			print(*self.sunc, sep='\n', file=fout)
 			print('main:', file=fout)
 			print('@start', file=fout)
+			print(*self.stat, sep='\n', file=fout)
 			print(*self.text, sep='\n', file=fout)
 			print('@exit', file=fout)
 		system(f'nasm -f elf32 {out}.asm -o {out}.o && gcc -m32 {out}.o -o {out}')
@@ -93,12 +95,15 @@ class Main:
 	def set_bss(self):
 		self.bss.append(f'@MEM40: resd {self.stack_size}')
 		for i, (ptoken, token) in enumerate(zip(self.tokens, self.tokens[1:])):
+			name = token.getstr()[1:]
 			if token.gettokentype() in BSS:
-				self.bss.append(f'{token.getstr()[1:]}: resd 1')
+				self.bss.append(f'{name}: resd 1')
 			elif token.gettokentype() == 'STATARR':
 				if ptoken.gettokentype() not in CONSTVAL:
 					const_error(ptoken)
-				self.bss.append(f'{token.getstr()[1:]}: resd {ptoken.getstr()}')
+				self.bss.append(f'@{name}: resd {ptoken.getstr()}')
+				self.bss.append(f'{name}: resd 1')
+				self.stat.append(f'mov dword [{name}], dword @{name}')
 				self.ban |= {i, i + 1}
 
 	def set_text(self, iter_cur_label=None, iter_end_label=None):

@@ -21,7 +21,7 @@
 - ```=<constant>``` - define constant pop_1
 - ```{}<array>``` - array\[pop_2\] = pop_1
 - ```<array>{}``` - array\[pop_1\] = pop_2
-- ```$<array>``` - assign heap array\[pop_1\] (only ITER42+)
+- ```$<array>``` - assign heap array\[pop_1\]
 - ```@<array>``` - assign static array\[pop_1\]
 - ```#<function> <commands> \``` - declare function
 - ```.<sunction> <commands> \``` - declare sunction

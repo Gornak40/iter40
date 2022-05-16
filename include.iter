@@ -4,6 +4,10 @@
 	()fib \swap ()fib +
 \
 
-899 =n
-\read \read \fib_sum \post
-n \post
+\read =n 0 =i n $arr
+\iter
+	i n == \halt \
+	\read i arr{}
+	i ++ =i
+\
+arr n ()arr_sum \post

@@ -19,3 +19,13 @@
 	n 2 - ()fib
 	+
 \
+
+.arr_sum
+	:n :arr 0 :i
+	\iter
+		i n == \halt \
+		i []arr sum + =sum
+		i ++ =i
+	\
+	sum
+\

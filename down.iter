@@ -1,5 +1,5 @@
 1000 =MAXN
-\read =n MAXN @arr
+\read =n n $arr
 0 =i
 \iter
 	i n == \halt \
