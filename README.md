@@ -1,7 +1,7 @@
-# ITER40
+# ITER
 *Better version of legendary ITER language.*
 
-### Standard
+### Standard ITER40
 - ```<number>``` - push(number)
 - ```<variable>``` - push(variable)
 - ```<constant>``` - push(constant)
@@ -21,7 +21,7 @@
 - ```=<constant>``` - define constant pop_1
 - ```{}<array>``` - array\[pop_2\] = pop_1
 - ```<array>{}``` - array\[pop_1\] = pop_2
-- ```$<array>``` - assign heap array\[pop_1\]
+- ```$<array>``` - assign heap array\[pop_1\] (only ITER42+)
 - ```@<array>``` - assign static array\[pop_1\]
 - ```#<function> <commands> \``` - declare function
 - ```.<sunction> <commands> \``` - declare sunction

@@ -1,5 +1,14 @@
-.rec
-	:i i \post
+1000 =MAXN
+\read =n MAXN @arr
+0 =i
+\iter
+	i n == \halt \
+	\read i arr{}
+	i ++ =i
 \
-
-4 5	()rec \post
+n -- =i
+\iter
+	i []arr \post
+	i ! \halt \
+	i -- =i
+\

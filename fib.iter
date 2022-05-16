@@ -19,5 +19,3 @@
 	n 2 - ()fib
 	+
 \
-
-\read ()fib \post

@@ -7,11 +7,11 @@ from token_types import *
 from os import system
 
 
-@command(help='ITER compiler made by Gornak40.')
+@command(help='ITER compiler (version ITER40) made by Gornak40.')
 @argument('source', type=File())
-@option('--outname', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Output file name.')
+@option('--out', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Set output file name.')
+@option('--stack-size', '-s', default=5000, type=int, help='Set stack size for sunctions.')
 class Main:
-	stack_size = 5000
 	tokens = list()
 	assign = list()
 	bss = list()
@@ -26,18 +26,18 @@ class Main:
 		self.label += 1
 		return f'@{self.label - 1}'
 
-	def __init__(self, source, outname):
-		self.lex(source)
+	def __init__(self, source, out, stack_size):
+		self.stack_size = stack_size
+		self.tokens = list(self.set_include(source))
 		self.check_balance()
-		self.set_include()
 		self.set_assign()
 		self.set_bss()
 		self.text = list(self.set_text())
 		pprint(self.tokens)
-		self.build(outname)
+		self.build(out)
 
-	def build(self, outname):
-		with open(f'{outname}.asm', 'w') as fout:
+	def build(self, out):
+		with open(f'{out}.asm', 'w') as fout:
 			print(*self.assign, sep='\n', file=fout)
 			print('section .bss', file=fout)
 			print(*set(self.bss), sep='\n', file=fout)
@@ -48,15 +48,17 @@ class Main:
 			print('@start', file=fout)
 			print(*self.text, sep='\n', file=fout)
 			print('@exit', file=fout)
-		system(f'nasm -f elf32 {outname}.asm -o {outname}.o && gcc -m32 {outname}.o -o {outname}')
+		system(f'nasm -f elf32 {out}.asm -o {out}.o && gcc -m32 {out}.o -o {out}')
 
 
 	def lex(self, source):
+		res = list()
 		for token in source.read().split():
 			try:
-				self.tokens.append(*lexer.lex(token))
+				res.append(*lexer.lex(token))
 			except LexingError:
 				syntax_error(token)
+		return res
 
 	def check_balance(self):
 		balance = 0
@@ -70,9 +72,14 @@ class Main:
 		if balance:
 			balance_error()
 
-	# TODO
-	def set_include(self):
-		pass
+	def set_include(self, source):
+		for token in self.lex(source):
+			if token.gettokentype() == 'INCLUDE':
+				with open(f'{token.getstr()[1:]}.iter') as isource:
+					for itoken in self.set_include(isource):
+						yield itoken
+			else:
+				yield token
 
 	def set_assign(self):
 		for i, (ptoken, token) in enumerate(zip(self.tokens, self.tokens[1:])):

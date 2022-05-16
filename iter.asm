@@ -70,7 +70,7 @@ mov [%1 + ebx * 4], eax
 shl dword [esp], 2
 call malloc
 add esp, 4
-mov [%1], eax
+mov dword [%1], eax
 %endmacro
 
 ; (a)
