@@ -15,17 +15,21 @@ tokens = {
 	'HALT': r'\\halt',
 	'JUMP': r'\\jump',
 	'ELSE': r'\\else',
+	'BACK': r'\\back',
 	'FUNC': rf'\\{vartemp}',
+	'SUNC': rf'\(\){vartemp}',
 
 	'END': r'\\',
 	'SETFUNC': rf'#{vartemp}',
-	'INCLUDE': rf'\.\.{vartemp}',
+	'SETSUNC': rf'\.{vartemp}',
+	'INCLUDE': rf',{vartemp}',
 	'COMMENT': r'`.+',
 
 	'NUM': r'-?\d+',
 	'GETVAR': rf'{vartemp}',
 	'GETCONST': rf'{consttemp}',
 	'SETVAR': rf'={vartemp}',
+	'SETLVAR': rf':{vartemp}',
 	'SETCONST': rf'={consttemp}',
 
 	'GETARR': rf'\[\]{vartemp}',

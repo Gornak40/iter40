@@ -11,10 +11,13 @@ from os import system
 @argument('source', type=File())
 @option('--outname', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Output file name.')
 class Main:
+	stack_size = 5000
 	tokens = list()
 	assign = list()
 	bss = list()
+	sunc = list()
 	text = list()
+	local = list()
 	ptr = 0
 	label = 0
 	ban = set()
@@ -37,9 +40,10 @@ class Main:
 		with open(f'{outname}.asm', 'w') as fout:
 			print(*self.assign, sep='\n', file=fout)
 			print('section .bss', file=fout)
-			print(*self.bss, sep='\n', file=fout)
+			print(*set(self.bss), sep='\n', file=fout)
 			with open('iter.asm') as fin:
 				print(fin.read(), file=fout)
+			print(*self.sunc, sep='\n', file=fout)
 			print('main:', file=fout)
 			print('@start', file=fout)
 			print(*self.text, sep='\n', file=fout)
@@ -79,6 +83,7 @@ class Main:
 				self.ban |= {i, i + 1}
 
 	def set_bss(self):
+		self.bss.append(f'@MEM40: resd {self.stack_size}')
 		for i, (ptoken, token) in enumerate(zip(self.tokens, self.tokens[1:])):
 			if token.gettokentype() in BSS:
 				self.bss.append(f'{token.getstr()[1:]}: resd 1')
@@ -87,7 +92,6 @@ class Main:
 					const_error(ptoken)
 				self.bss.append(f'{token.getstr()[1:]}: resd {ptoken.getstr()}')
 				self.ban |= {i, i + 1}
-		self.bss = list(set(self.bss))
 
 	def set_text(self, iter_cur_label=None, iter_end_label=None):
 		while self.ptr < len(self.tokens):
@@ -128,12 +132,40 @@ class Main:
 			elif token.gettokentype() == 'JUMP':
 				yield f'jmp {iter_cur_label}'
 				self.ptr += 1
+			elif token.gettokentype() == 'SETLVAR':
+				yield f'@setlvar {token.getstr()[1:]}'
+				self.local.append(token.getstr()[1:])
+				self.ptr += 1
 			elif token.gettokentype() == 'SETFUNC':
 				yield f'%macro @{token.getstr()[1:]} 0'
 				self.ptr += 1
 				for line in self.set_text(iter_cur_label, iter_end_label):
 					yield line
 				yield f'%endmacro'
+			elif token.gettokentype() == 'BACK':
+				yield RETSTATEMENT
+				self.ptr += 1
+			elif token.gettokentype() == 'SETSUNC':
+				# IT'S ALL BROKEN
+				self.sunc.append(f'@{token.getstr()[1:]}:')
+				self.sunc.append('@meminit')
+				self.local.clear()
+				self.ptr += 1
+				lines = list(self.set_text(iter_cur_label, iter_end_label)) + [RETSTATEMENT]
+				self.local = list(set(self.local))
+				for lvar in self.local:
+					self.sunc.append(f'@memgetvar {lvar}')
+					self.bss.append(f'{lvar}: resd 1')
+				for line in lines:
+					if line == RETSTATEMENT:
+						for lvar in reversed(self.local):
+							self.sunc.append(f'@memsetvar {lvar}')
+						self.sunc.append('@memexit')
+					else:
+						self.sunc.append(line)
+			elif token.gettokentype() == 'SUNC':
+				yield f'call @{token.getstr()[2:]}'
+				self.ptr += 1
 			elif token.gettokentype() == 'FUNC':
 				yield f'@{token.getstr()[1:]}'
 				self.ptr += 1

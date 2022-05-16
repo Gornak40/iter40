@@ -1,0 +1,23 @@
+.pow
+	:n :a
+	n ! 1 \back \
+	n 1 & ? a n -- ()pow	a * \
+	\else a n 1 >> ()pow \copy * \
+\
+
+.rev
+	\read :n
+	n ! \back \
+	()rev
+	n \post
+\
+
+.fib
+	:n
+	n 1 <= n \back \
+	n -- ()fib
+	n 2 - ()fib
+	+
+\
+
+\read ()fib \post

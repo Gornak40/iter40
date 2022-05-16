@@ -11,6 +11,7 @@ extern malloc
 ; system
 %macro @start 0
 mov ebp, esp
+mov esi, @MEM40
 %endmacro
 
 %macro @exit 0
@@ -46,6 +47,10 @@ add esp, 4
 
 ; set
 %macro @setvar 1
+pop dword [%1]
+%endmacro
+
+%macro @setlvar 1
 pop dword [%1]
 %endmacro
 
@@ -203,4 +208,28 @@ cmp eax, ebx
 %macro @cmp0 0
 pop eax
 cmp eax, 0
+%endmacro
+
+; mem stack
+%macro @meminit 0
+pop dword [esi]
+add esi, 4
+%endmacro
+
+%macro @memgetvar 1
+mov eax, dword [%1]
+mov [esi], eax
+add esi, 4
+%endmacro
+
+%macro @memsetvar 1
+sub esi, 4
+mov eax, dword [esi]
+mov dword [%1], eax
+%endmacro
+
+%macro @memexit 0
+sub esi, 4
+push dword [esi]
+ret
 %endmacro

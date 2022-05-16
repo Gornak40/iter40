@@ -1,21 +1,22 @@
 \read =n n $arr n ++ $ps
 0 0 {}ps 0 =i
 \iter
-	i n == \halt ;
-	i \read {}arr
+	i n == \halt \
+	\read i arr{}
 	i ++ =i
-;
+\
 
 0 =i
 \iter
-	i n == \halt ;
-	i ++ i []arr i []ps + {}ps
-;
+	i n == \halt \
+	i []arr i []ps +	i ++ ps{}
+	i ++ =i
+\
 
 \read =t
 \iter
-	t ! \halt ;
+	t ! \halt \
 	\read -- =l \read =r
 	r []ps l []ps - \post
 	t -- =t
-;
+\
