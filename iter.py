@@ -1,5 +1,5 @@
 #!venv/bin/python
-from click import command, argument, File, option, Path
+from click import command, argument, File, option, Path, version_option
 from lexer import lexer, LexingError
 from pprint import pprint
 from errors import *
@@ -7,10 +7,11 @@ from token_types import *
 from os import system
 
 
-@command(help='ITER compiler (version ITER40) made by Gornak40.')
+@command(help='ITER compiler made by Gornak40.')
 @argument('source', type=File())
 @option('--out', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Set output file name.')
 @option('--stack-size', '-s', default=5000, type=int, help='Set stack size for sunctions.')
+@version_option(version='ITER40')
 class Main:
 	tokens = list()
 	assign = list()

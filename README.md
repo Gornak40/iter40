@@ -34,3 +34,4 @@
 - ```<, <=, >, >=, ==, !=, !, ? <commands> \``` - if pop_2 ** pop_1
 - ```\else <commands> \``` - else
 - ```\<function>``` - function()
+- ```()<sunction>``` - sunction()
