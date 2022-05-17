@@ -43,7 +43,7 @@ tokens = {
 	'STATARR': rf'@{vartemp}',
 
 	'INC': r'\+\+',
-	'DEC': r'\-\-',
+	'DEC': r'--',
 	'NOT': r'~',
 	'MUL2': r'\*2',
 	'DIV2': r'/2',
@@ -58,6 +58,8 @@ tokens = {
 	'AND': r'&',
 	'SHL': r'<<',
 	'SHR': r'>>',
+	'RARROW': r'->',
+	'LARROW': r'<-',
 
 	'MULDIV': r'\*/',
 	'MULMOD': r'\*%',

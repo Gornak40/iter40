@@ -170,6 +170,18 @@ pop ecx
 shr dword [esp], cl
 %endmacro
 
+%macro @rarrow 0
+pop eax
+shl eax, 2
+add dword [esp], eax
+%endmacro
+
+%macro @larrow 0
+pop eax
+shl eax, 2
+sub dword [esp], eax
+%endmacro
+
 ; (a, b, c)
 %macro @muldiv 0
 pop ecx

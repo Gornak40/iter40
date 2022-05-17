@@ -8,7 +8,7 @@
 - ```[]<array>``` - push(array[pop_1])
 - ```\read``` - push(input)
 - ```++, --, ~, *2, /2``` - push(pop_1, )
-- ```+, -, *, /, %, ^, &, |, <<, >>``` - push(pop_2, pop_1)
+- ```+, -, *, /, %, ^, &, |, <<, >>, ->, <-``` - push(pop_2, pop_1)
 - ```*/, *%``` - push(pop_3, pop_2, pop_1)
 - ```\copy``` - push(top_1)
 - ```\prev``` - push(top_2)

@@ -1,15 +1,17 @@
 ,algolimp
 
-\read =n	n $arr
+\read =n	n $arr n ++ $ps
 0
 \iter
 	\copy n == \halt \
 	\copy \read {}arr
 	++
 \
-arr n ()min_element \post
-arr n ()max_element \post
-arr n ()accumulate \post
-\read =x
-arr n x ()lower_bound \post
-arr n x ()upper_bound \post
+
+arr n ps 2 -> 1 <- ()partial_sum
+0
+\iter
+	\copy n ++ == \halt \
+	\copy []ps \post
+	++
+\
