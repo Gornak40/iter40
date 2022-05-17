@@ -1,0 +1,7 @@
+syntax "iter" "\.iter$"
+
+color brightmagenta "\+|-|\*|/|%|=|<|>|!|\?|:|\$|@|\||\(|\)"
+color cyan "(\[\])|(\{\})"
+color blue "-?[0-9]+"
+color yellow "\\[a-z0-9_]*"
+color green "((#[a-z0-9_])|(\.[a-z0-9_])).+"

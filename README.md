@@ -19,6 +19,7 @@
 - ```\post``` - print(pop_1)
 - ```\mset``` - memset(pop_1, pop_2, pop_3 * sizeof(int))
 - ```\mcpy``` - memcpy(pop_1, pop_2, pop_3 * sizeof(int))
+- ```\pcnt``` - \_\_builtin_popcount(pop_1)
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1

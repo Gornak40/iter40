@@ -21,6 +21,7 @@ tokens = {
 	'BACK': r'\\back',
 	'MSET': r'\\mset',
 	'MCPY': r'\\mcpy',
+	'PCNT': r'\\pcnt',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 

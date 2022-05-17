@@ -11,6 +11,7 @@ from os import system
 @argument('source', type=File())
 @option('--out', '-o', default='main', type=Path(writable=True, dir_okay=False), help='Set output file name.')
 @option('--stack-size', '-s', default=5000, type=int, help='Set stack size for sunctions.')
+@option('--tokens', '-t', is_flag=True, help='Show all tokens list.')
 @version_option(version='ITER40')
 class Main:
 	tokens = list()
@@ -28,14 +29,14 @@ class Main:
 		self.label += 1
 		return f'{"%%" if is_func else "@"}{self.label - 1}'
 
-	def __init__(self, source, out, stack_size):
+	def __init__(self, source, out, stack_size, tokens):
 		self.stack_size = stack_size
 		self.tokens = list(self.set_include(source))
 		self.check_balance()
 		self.set_assign()
 		self.set_bss()
 		self.text = list(self.set_text())
-		pprint(self.tokens)
+		pprint(self.tokens) if tokens else None
 		self.build(out)
 
 	def build(self, out):

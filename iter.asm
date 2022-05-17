@@ -111,6 +111,12 @@ shl dword [esp], 1
 shr dword [esp], 1
 %endmacro
 
+%macro @pcnt 0
+pop eax
+popcnt ebx, eax
+push ebx
+%endmacro
+
 ; (a, b)
 %macro @add 0
 pop ebx

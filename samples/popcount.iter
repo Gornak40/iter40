@@ -1,0 +1,32 @@
+
+
+.popcount
+	:n 0
+	\iter
+		n ! \halt \
+		n 1 & ? ++ \
+		n /2 =n
+	\
+\
+
+,algolymp
+
+.popcount2
+	:n n ! 0 \back \
+	n 1 &	n /2 ()popcount2
+	+
+\
+
+.changing_sum
+	:n :arr
+	0 :i
+	0
+	\iter
+		i n == \halt \
+		i []arr
+		i 1 & ? - \ \else + \
+		i ++ =i
+	\
+\
+
+\read \read ()gcd \post
