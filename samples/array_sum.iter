@@ -1,11 +1,11 @@
-,algolimp
+,algolymp
 
 3 4 5 \prew \post
 
 \read =n	n $arr n ++ $ps
 0
 \iter
-	\copy n == \halt \
+	\copy n == \drop \halt \
 	\copy \read {}arr
 	++
 \
@@ -13,7 +13,15 @@
 arr n ps 2 -> 1 <- ()partial_sum
 0
 \iter
-	\copy n ++ == \halt \
+	\copy n ++ == \drop \halt \
 	\copy []ps \post
+	++
+\
+
+arr n ()reverse
+0
+\iter
+	\copy n == \drop \halt \
+	\copy []arr \post
 	++
 \

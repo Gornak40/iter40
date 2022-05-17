@@ -89,3 +89,14 @@
 	\
 \
 
+.reverse
+	:n :arr
+	0
+	\iter
+		\copy n /2 == \drop \back \
+		n -- \prev - []arr
+		n -- \prew - \prew []arr {}arr
+		\prev arr{}
+		++
+	\
+\
