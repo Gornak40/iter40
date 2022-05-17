@@ -21,7 +21,7 @@
 	0
 	\iter
 		n ! \halt \
-		n -- =n
+		n -- :n
 		n []arr +
 	\
 \
@@ -31,7 +31,7 @@
 	INF
 	\iter
 		n ! \halt \
-		n -- =n
+		n -- :n
 		n []arr \min
 	\
 \
@@ -41,7 +41,7 @@
 	-INF
 	\iter
 		n ! \halt \
-		n -- =n
+		n -- :n
 		n []arr \max
 	\
 \
@@ -50,8 +50,29 @@
 	:b :a
 	\iter
 		b ! \halt \
-		a b % b =a =b
+		a b % b :a :b
 	\
 	a
 \
 
+.lower_bound
+	:x :n :arr
+	-1 :l n :r
+	\iter
+		r l - -- ! r \back \
+		l r + /2 :mid
+		mid []arr x < mid :l \
+		\else mid :r \
+	\
+\
+
+.upper_bound
+	:x :n :arr
+	-1 :l n :r
+	\iter
+		r l - -- ! r \back \
+		l r + /2 :mid
+		mid []arr x <= mid :l \
+		\else mid :r \
+	\
+\

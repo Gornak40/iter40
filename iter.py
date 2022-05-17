@@ -24,9 +24,9 @@ class Main:
 	label = 0
 	ban = set()
 
-	def get_label(self):
+	def get_label(self, is_func):
 		self.label += 1
-		return f'.@{self.label - 1}'
+		return f'{"%%" if is_func else "@"}{self.label - 1}'
 
 	def __init__(self, source, out, stack_size):
 		self.stack_size = stack_size
@@ -106,7 +106,7 @@ class Main:
 				self.stat.append(f'mov dword [{name}], dword @{name}')
 				self.ban |= {i, i + 1}
 
-	def set_text(self, iter_cur_label=None, iter_end_label=None):
+	def set_text(self, iter_cur_label=None, iter_end_label=None, is_func=False):
 		while self.ptr < len(self.tokens):
 			token = self.tokens[self.ptr]
 			if self.ptr in self.ban or token.gettokentype() == 'COMMENT':
@@ -116,14 +116,14 @@ class Main:
 				return
 			elif token.gettokentype() in COND:
 				yield ('@cmp0' if token.gettokentype()[-1] == '0' else '@cmp')
-				cur_label = self.get_label()
-				end_label = self.get_label()
+				cur_label = self.get_label(is_func)
+				end_label = self.get_label(is_func)
 				yield f'{str().join(filter(str.isalpha, token.gettokentype())).lower()} {cur_label}'
 				self.ptr += 1
-				lines = list(self.set_text(iter_cur_label, iter_end_label))
+				lines = list(self.set_text(iter_cur_label, iter_end_label, is_func))
 				if self.ptr < len(self.tokens) and self.tokens[self.ptr].gettokentype() == 'ELSE':
 					self.ptr += 1
-					for line in self.set_text(iter_cur_label, iter_end_label):
+					for line in self.set_text(iter_cur_label, iter_end_label, is_func):
 						yield line
 				yield f'jmp {end_label}'
 				yield f'{cur_label}:'
@@ -131,11 +131,11 @@ class Main:
 					yield line
 				yield f'{end_label}:'
 			elif token.gettokentype() == 'ITER':
-				cur_label = self.get_label()
-				end_label = self.get_label()
+				cur_label = self.get_label(is_func)
+				end_label = self.get_label(is_func)
 				yield f'{cur_label}:'
 				self.ptr += 1
-				for line in self.set_text(cur_label, end_label):
+				for line in self.set_text(cur_label, end_label, is_func):
 					yield line
 				yield f'jmp {cur_label}'
 				yield f'{end_label}:'
@@ -152,7 +152,7 @@ class Main:
 			elif token.gettokentype() == 'SETFUNC':
 				self.sunc.append(f'%macro @{token.getstr()[1:]} 0')
 				self.ptr += 1
-				for line in self.set_text(iter_cur_label, iter_end_label):
+				for line in self.set_text(iter_cur_label, iter_end_label, True):
 					self.sunc.append(line)
 				self.sunc.append(f'%endmacro')
 			elif token.gettokentype() == 'BACK':
@@ -163,7 +163,7 @@ class Main:
 				self.sunc.append('@meminit')
 				self.local.clear()
 				self.ptr += 1
-				lines = list(self.set_text(iter_cur_label, iter_end_label)) + [RETSTATEMENT]
+				lines = list(self.set_text(iter_cur_label, iter_end_label, is_func)) + [RETSTATEMENT]
 				self.local = list(set(self.local))
 				for lvar in self.local:
 					self.sunc.append(f'@memgetvar {lvar}')

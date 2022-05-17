@@ -1,8 +1,11 @@
-\read =a \read =b
-a b <=
-	a b == 101 \post \
-	\else
-		a 1 & ? 777 \post \
-	\
+#gettok
+	100 < 65 \ \else 200 \
 \
-\else 666 \post \
+
+
+#max
+	\prev \prev < \swap \ \drop
+	\gettok
+\
+
+5 4 \max 3 4 \max + \post

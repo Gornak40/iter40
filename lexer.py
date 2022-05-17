@@ -8,6 +8,7 @@ consttemp = r'-?[A-Z]+'
 tokens = {
 	'READ': r'\\read',
 	'COPY': r'\\copy',
+	'PREV': r'\\prev',
 	'PUSH': r'\\push',
 	'SWAP': r'\\swap',
 	'DROP': r'\\drop',
