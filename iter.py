@@ -1,6 +1,6 @@
 #!venv/bin/python
 from click import command, argument, File, option, Path, version_option
-from lexer import lexer, LexingError
+from lexer import lexer, LexingError, Token
 from pprint import pprint
 from errors import *
 from token_types import *
@@ -26,7 +26,7 @@ class Main:
 
 	def get_label(self):
 		self.label += 1
-		return f'@{self.label - 1}'
+		return f'.@{self.label - 1}'
 
 	def __init__(self, source, out, stack_size):
 		self.stack_size = stack_size
@@ -150,16 +150,15 @@ class Main:
 				self.local.append(token.getstr()[1:])
 				self.ptr += 1
 			elif token.gettokentype() == 'SETFUNC':
-				yield f'%macro @{token.getstr()[1:]} 0'
+				self.sunc.append(f'%macro @{token.getstr()[1:]} 0')
 				self.ptr += 1
 				for line in self.set_text(iter_cur_label, iter_end_label):
-					yield line
-				yield f'%endmacro'
+					self.sunc.append(line)
+				self.sunc.append(f'%endmacro')
 			elif token.gettokentype() == 'BACK':
 				yield RETSTATEMENT
 				self.ptr += 1
 			elif token.gettokentype() == 'SETSUNC':
-				# IT'S ALL BROKEN
 				self.sunc.append(f'@{token.getstr()[1:]}:')
 				self.sunc.append('@meminit')
 				self.local.clear()

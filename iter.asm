@@ -103,6 +103,14 @@ dec dword [esp]
 not dword [esp]
 %endmacro
 
+%macro @mul2 0
+shl dword [esp], 1
+%endmacro
+
+%macro @div2 0
+shr dword [esp], 1
+%endmacro
+
 ; (a, b)
 %macro @add 0
 pop ebx

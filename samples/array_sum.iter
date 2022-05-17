@@ -1,0 +1,27 @@
+,algolimp
+
+\read /2 \post
+
+\read =n	n $arr
+0
+\iter
+	\copy n == \halt \
+	\copy \read {}arr
+	++
+\
+arr n ()min_element \post
+arr n ()max_element \post
+arr n ()accumulate \post
+
+
+
+\read \rson \post
+
+\read \read \max \post
+
+\read \read \min \post
+
+\read \read ()gcd \post
+
+
+arr n ()accumulate \post

@@ -14,3 +14,8 @@ def balance_error():
 def const_error(token):
 	cprint(f'[error] {token} is not constant', color='red')
 	exit(0)
+
+
+def capsule_error(token):
+	cprint(f'[error] {token} is broken capsule', color='red')
+	exit(0)

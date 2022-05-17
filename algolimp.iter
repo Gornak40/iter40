@@ -1,0 +1,57 @@
+2147483647 =INF
+
+#min
+	\prev \prev > \swap \ \drop
+\
+
+#max
+	\prev \prev < \swap \ \drop
+\
+
+#lson
+	*2 1 |
+\
+
+#rson
+	*2 2 +
+\
+
+.accumulate
+	:n :arr
+	0
+	\iter
+		n ! \halt \
+		n -- =n
+		n []arr +
+	\
+\
+
+.min_element
+	:n :arr
+	INF
+	\iter
+		n ! \halt \
+		n -- =n
+		n []arr \min
+	\
+\
+
+.max_element
+	:n :arr
+	-INF
+	\iter
+		n ! \halt \
+		n -- =n
+		n []arr \max
+	\
+\
+
+.gcd
+	:b :a
+	\iter
+		b ! \halt \
+		a b % b =a =b
+	\
+	a
+\
+

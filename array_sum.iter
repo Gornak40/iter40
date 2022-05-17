@@ -1,9 +1,0 @@
-\read =n
-n $arr 0 =i 0 =sum
-\iter
-	i n == \halt \
-	\read i arr{}
-	sum i []arr + =sum
-	i ++ =i
-\
-sum \post

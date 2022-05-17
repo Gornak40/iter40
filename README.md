@@ -7,9 +7,9 @@
 - ```<constant>``` - push(constant)
 - ```[]<array>``` - push(array[pop_1])
 - ```\read``` - push(input)
-- ```++, --, ~``` - push(pop_1 ^^)
-- ```+, -, *, /, %, ^, &, |, <<, >>``` - push(pop_2 ^^ pop_1)
-- ```*/, *%``` - push(pop_3 ^^ pop_2 ^^ pop_1)
+- ```++, --, ~, *2, /2``` - push(pop_1, )
+- ```+, -, *, /, %, ^, &, |, <<, >>``` - push(pop_2, pop_1)
+- ```*/, *%``` - push(pop_3, pop_2, pop_1)
 - ```\copy``` - push(top_1)
 - ```\prev``` - push(top_2)
 - ```\push``` - push(pop_1), push(pop_2), push(pop_1)
@@ -25,15 +25,15 @@
 - ```<array>{}``` - array\[pop_1\] = pop_2
 - ```$<array>``` - assign heap array\[pop_1\]
 - ```@<array>``` - assign static array\[pop_1\]
-- ```#<function> <commands> \``` - declare function
-- ```.<sunction> <commands> \``` - declare sunction
+- ```#<function> <commands> \``` - declare function (same as define)
+- ```.<sunction> <commands> \``` - declare sunction (same as function)
 - ```\back``` - return
 - ```,<module>``` - include module
 - ``` `<comment>``` - comment
 - ```\iter <commands> \``` - while true
 - ```\halt``` - break
 - ```\jump``` - continue
-- ```<, <=, >, >=, ==, !=, !, ? <commands> \``` - if pop_2 ** pop_1
+- ```<, <=, >, >=, ==, !=, !, ? <commands> \``` - if (pop_2, pop_1)
 - ```\else <commands> \``` - else
 - ```\<function>``` - function()
 - ```()<sunction>``` - sunction()

@@ -1,8 +1,9 @@
-from rply import LexerGenerator
+from rply import LexerGenerator, Token
 from rply.errors import LexingError
 
 vartemp = r'[a-z\d_]+'
-consttemp = r'[A-Z]+'
+inctemp = r'[a-zA-Z\d\./]+'
+consttemp = r'-?[A-Z]+'
 
 tokens = {
 	'READ': r'\\read',
@@ -24,7 +25,7 @@ tokens = {
 	'END': r'\\',
 	'SETFUNC': rf'#{vartemp}',
 	'SETSUNC': rf'\.{vartemp}',
-	'INCLUDE': rf',{vartemp}',
+	'INCLUDE': rf',{inctemp}',
 	'COMMENT': r'`.+',
 
 	'NUM': r'-?\d+',
@@ -43,6 +44,8 @@ tokens = {
 	'INC': r'\+\+',
 	'DEC': r'\-\-',
 	'NOT': r'~',
+	'MUL2': r'\*2',
+	'DIV2': r'/2',
 
 	'ADD': r'\+',
 	'SUB': r'-',
