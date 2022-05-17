@@ -207,7 +207,11 @@ push dword [esp]
 %endmacro
 
 %macro @prev 0
-push dword [esp+4]
+push dword [esp + 4]
+%endmacro
+
+%macro @prew 0
+push dword[esp + 8]
 %endmacro
 
 %macro @swap 0

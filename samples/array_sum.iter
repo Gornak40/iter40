@@ -1,5 +1,7 @@
 ,algolimp
 
+3 4 5 \prew \post
+
 \read =n	n $arr n ++ $ps
 0
 \iter

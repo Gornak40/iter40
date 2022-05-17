@@ -9,6 +9,7 @@ tokens = {
 	'READ': r'\\read',
 	'COPY': r'\\copy',
 	'PREV': r'\\prev',
+	'PREW': r'\\prew',
 	'PUSH': r'\\push',
 	'SWAP': r'\\swap',
 	'DROP': r'\\drop',
