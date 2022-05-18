@@ -17,6 +17,36 @@
 	*2 2 +
 \
 
+`range
+.read_array
+	:n :arr
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy \read {}arr
+		++
+	\
+\
+
+.print_array
+	:n :arr
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy []arr \post
+		++
+	\
+\
+
+.fill
+	:x :n :arr
+	n
+	\iter
+		\copy ! \halt \
+		-- \copy x {}arr
+	\
+\
+
 .accumulate
 	:n :arr
 	0
@@ -47,13 +77,38 @@
 	\
 \
 
-.gcd
-	:b :a
+.partial_sum
+	:ps :n :arr
+	0 []arr 0 ps{}
+	1
 	\iter
-		b ! \halt \
-		a b % b :a :b
+		\copy n == \halt \
+		\copy []arr \prev -- []ps + \prev ps{}
+		++ 
 	\
-	a
+\
+
+.reverse
+	:n :arr
+	0
+	\iter
+		\copy n /2 == \drop \back \
+		n -- \prev - []arr
+		n -- \prew - \prew []arr {}arr
+		\prev arr{}
+		++
+	\
+\
+
+`search
+.find
+	:x :n :arr
+	0
+	\iter
+		\copy n == \back \
+		\copy []arr x == \back \
+		++
+	\
 \
 
 .lower_bound
@@ -78,25 +133,19 @@
 	\
 \
 
-.partial_sum
-	:ps :n :arr
-	0 []arr 0 ps{}
-	1
+`numeric
+.gcd
+	:b :a
 	\iter
-		\copy n == \halt \
-		\copy []arr \prev -- []ps + \prev ps{}
-		++ 
+		b ! \halt \
+		a b % b :a :b
 	\
+	a
 \
 
-.reverse
-	:n :arr
-	0
-	\iter
-		\copy n /2 == \drop \back \
-		n -- \prev - []arr
-		n -- \prew - \prew []arr {}arr
-		\prev arr{}
-		++
-	\
+.pow_mod
+	:m :n :a
+	n ! 1 \back \
+	a n /2 m ()pow_mod \copy m *%
+	n 1 & ? a m *% \
 \

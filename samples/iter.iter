@@ -1,8 +1,0 @@
-\read =n
-\iter
-	n ! \halt \
-	n -- =n
-	\read =x
-	x 1 & ? \jump \
-	x \post
-\

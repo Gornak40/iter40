@@ -1,7 +1,5 @@
 ,algolymp
 
-3 4 5 \prew \post
-
 \read =n	n $arr n ++ $ps
 0
 \iter
@@ -9,6 +7,10 @@
 	\copy \read {}arr
 	++
 \
+
+arr n ()accumulate \post
+arr n ()min_element \post
+arr n ()max_element \post
 
 arr n ps 2 -> 1 <- ()partial_sum
 0

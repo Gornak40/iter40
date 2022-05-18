@@ -1,0 +1,48 @@
+,algolymp
+
+#relax
+	id \lson []tr id \rson []tr \min	id tr{}
+\
+
+.build
+	:r :l :id
+	r l - -- !	l []arr id tr{} \back \
+	l r + /2 :mid
+	id \lson l mid ()build
+	id \rson mid r ()build
+	\relax
+\
+
+.change
+	:x :i :r :l :id
+	r l - -- ! x id tr{} \back \
+	l r + /2 :mid
+	i mid < id \lson l mid i x ()change \
+	\else id \rson mid r i x ()change \
+	\relax
+\
+
+.query
+	:qr :ql :r :l :id
+	qr l <= INF \back \
+	r ql <= INF \back \
+	ql l <= r qr <= id []tr \back \ \
+	l r + /2 :mid
+	id \lson l mid ql qr ()query
+	id \rson mid r ql qr ()query
+	\min
+\
+
+\read =n n $arr n 2 << $tr
+arr n ()read_array
+tr n 2 << INF ()fill
+0 0 n ()build
+
+`1 `change `2 `query
+\iter
+	\read 1 ==
+		0 0 n \read -- \read ()change
+	\ \else
+		0 0 n \read -- \read ()query \post
+	\
+\
