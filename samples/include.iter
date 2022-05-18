@@ -1,13 +1,9 @@
-,fib
+,algolymp
 
-#fib_sum
-	()fib \swap ()fib +
-\
+\read =n n $arr
+arr n ()read_array
+arr 1 -> 45 {}.
+34 arr 2 -> .{}
+arr 3 -> 1 <- []. \post
 
-\read =n 0 =i n $arr
-\iter
-	i n == \halt \
-	\read i arr{}
-	i ++ =i
-\
-arr n ()arr_sum \post
+arr n ()print_array

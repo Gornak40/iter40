@@ -34,6 +34,11 @@ push dword [%1]
 push %1
 %endmacro
 
+%macro @getptr 0
+pop eax
+push dword [eax]
+%endmacro
+
 %macro @getarr 1
 pop eax
 mov ecx, dword [%1]
@@ -55,6 +60,18 @@ pop dword [%1]
 
 %macro @setlvar 1
 pop dword [%1]
+%endmacro
+
+%macro @lsetptr 0
+pop ebx
+pop eax
+mov dword [eax], ebx
+%endmacro
+
+%macro @rsetptr 0
+pop ebx
+pop eax
+mov dword [ebx], eax
 %endmacro
 
 %macro @lsetarr 1

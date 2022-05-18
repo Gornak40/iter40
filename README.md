@@ -5,6 +5,7 @@
 - ```<number>``` - push(number)
 - ```<variable>``` - push(variable)
 - ```<constant>``` - push(constant)
+- ```[].``` - push(\*pop_1)
 - ```[]<array>``` - push(array[pop_1])
 - ```\read``` - push(input)
 - ```++, --, ~, *2, /2``` - push(pop_1, )
@@ -23,6 +24,8 @@
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1
+- ```{}.``` - \*pop_2 = pop_1
+- ```.{}``` - \*pop_1 = pop_2
 - ```{}<array>``` - array\[pop_2\] = pop_1
 - ```<array>{}``` - array\[pop_1\] = pop_2
 - ```$<array>``` - assign heap array\[pop_1\]

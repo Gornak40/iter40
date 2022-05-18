@@ -38,6 +38,9 @@ tokens = {
 	'SETLVAR': rf':{vartemp}',
 	'SETCONST': rf'={consttemp}',
 
+	'GETPTR': r'\[\]\.',
+	'LSETPTR': r'\{\}\.',
+	'RSETPTR': r'\.\{\}',
 	'GETARR': rf'\[\]{vartemp}',
 	'LSETARR': r'\{\}' + vartemp,
 	'RSETARR': vartemp + r'\{\}',
