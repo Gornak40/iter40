@@ -2,8 +2,7 @@
 
 \read =n n $arr
 arr n ()read_array
-arr 1 -> 45 {}.
-34 arr 2 -> .{}
-arr 3 -> 1 <- []. \post
-
+arr 1 -> \copy 1 <- <->
+n -- -1 arr 1 -> \mset
+arr n ()radix_sort
 arr n ()print_array

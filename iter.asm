@@ -19,6 +19,8 @@ mov esi, @MEM40
 %macro @exit 0
 mov esp, ebp
 xor eax, eax
+xor ecx, ecx
+xor edx, edx
 %endmacro
 
 ; get
@@ -88,6 +90,15 @@ mov ecx, dword [%1]
 mov [ecx + ebx * 4], eax
 %endmacro
 
+%macro @swapptr 0
+pop ebx
+pop eax
+mov ecx, dword [ebx]
+mov edx, dword [eax]
+mov dword [ebx], edx
+mov dword [eax], ecx
+%endmacro
+
 %macro @heaparr 1
 shl dword [esp], 2
 call malloc
@@ -128,7 +139,7 @@ shl dword [esp], 1
 shr dword [esp], 1
 %endmacro
 
-%macro @pcnt 0
+%macro @bcnt 0
 pop eax
 popcnt ebx, eax
 push ebx

@@ -1,12 +1,4 @@
-#amogus
-	+ +
-\
-
-\read =a \read =b \read =c 
-a b c \amogus \post
-
-#sugoma
-	50 \amogus
-\
-
-a b c \sugoma \post
+\read =n
+n \bcnt \post
+n \bclz \post
+n \bctz \post

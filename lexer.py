@@ -21,7 +21,9 @@ tokens = {
 	'BACK': r'\\back',
 	'MSET': r'\\mset',
 	'MCPY': r'\\mcpy',
-	'PCNT': r'\\pcnt',
+	'BCNT': r'\\bcnt',
+	'BCLZ': r'\\bclz',
+	'BCTZ': r'\\bctz',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 
@@ -44,6 +46,7 @@ tokens = {
 	'GETARR': rf'\[\]{vartemp}',
 	'LSETARR': r'\{\}' + vartemp,
 	'RSETARR': vartemp + r'\{\}',
+	'SWAPPTR': r'<->',
 	'HEAPARR': rf'\${vartemp}',
 	'STATARR': rf'@{vartemp}',
 

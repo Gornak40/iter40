@@ -1,6 +1,7 @@
 2147483647 =INF
 0 =NULL
 
+`func_block
 #min
 	\prev \prev > \swap \ \drop
 \
@@ -17,7 +18,7 @@
 	*2 2 +
 \
 
-`range
+`range_block
 .read_array
 	:n :arr
 	0
@@ -100,7 +101,49 @@
 	\
 \
 
-`search
+`csud
+.__radix_sort
+	:i :n :arr
+	n ! \back \
+	0 :pt
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy []arr   1 i <<  &  !
+			pt []arr
+			\prev []arr  pt  arr{}
+			\prev arr{} 
+			pt ++ :pt
+		\
+		++
+	\
+	i ! \back \
+	arr  pt  i --  ()__radix_sort
+	arr pt ->  n pt -  i -- ()__radix_sort
+\
+
+`csud
+.radix_sort
+	:n :arr
+	arr n ()min_element :mel
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy []arr mel - \prev arr{}
+		++
+	\
+
+	arr n 31 ()__radix_sort
+
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy []arr mel + \prev arr{}
+		++
+	\
+\
+
+`search_block
 .find
 	:x :n :arr
 	0
@@ -133,7 +176,7 @@
 	\
 \
 
-`numeric
+`numeric_block
 .gcd
 	:b :a
 	\iter
