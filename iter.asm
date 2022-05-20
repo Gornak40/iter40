@@ -19,8 +19,7 @@ mov esi, @MEM40
 %macro @exit 0
 mov esp, ebp
 xor eax, eax
-xor ecx, ecx
-xor edx, edx
+ret
 %endmacro
 
 ; get
@@ -97,6 +96,13 @@ mov ecx, dword [ebx]
 mov edx, dword [eax]
 mov dword [ebx], edx
 mov dword [eax], ecx
+%endmacro
+
+%macro @heap 0
+shl dword [esp], 2
+call malloc
+add esp, 4
+push eax
 %endmacro
 
 %macro @heaparr 1
@@ -271,6 +277,20 @@ add esp, 4
 push dword @formatout
 call printf
 add esp, 8
+%endmacro
+
+%macro @dump 0
+pop eax
+pop ecx
+shl ecx, 2
+mov ebx, esp
+push ecx
+push ebx
+push eax
+call memcpy
+add esp, 8
+pop ecx
+add esp, ecx
 %endmacro
 
 ; conditions

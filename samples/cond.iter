@@ -1,11 +1,5 @@
-#gettok
-	100 < 65 \ \else 200 \
-\
+,algolymp
 
-
-#max
-	\prev \prev < \swap \ \drop
-	\gettok
-\
-
-5 4 \max 3 4 \max + \post
+\read =n n $
+\copy n ()read_array
+\copy n ()print_array

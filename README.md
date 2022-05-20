@@ -6,7 +6,7 @@
 - ```<variable>``` - push(variable)
 - ```<constant>``` - push(constant)
 - ```[].``` - push(\*pop_1)
-- ```[]<array>``` - push(array[pop_1])
+- ```[]<array>``` - push(array\[pop_1\])
 - ```\read``` - push(input)
 - ```++, --, ~, *2, /2``` - push(pop_1, )
 - ```+, -, *, /, %, ^, &, |, <<, >>, ->, <-``` - push(pop_2, pop_1)
@@ -21,6 +21,7 @@
 - ```\mset``` - memset(pop_1, pop_2, pop_3 * sizeof(int))
 - ```\mcpy``` - memcpy(pop_1, pop_2, pop_3 * sizeof(int))
 - ```\bcnt``` - \_\_builtin_popcount(pop_1)
+- ```\dump``` - pop pop_2 values to \*pop_1
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1
@@ -29,6 +30,7 @@
 - ```{}<array>``` - array\[pop_2\] = pop_1
 - ```<array>{}``` - array\[pop_1\] = pop_2
 - ```<->``` - swap(\*pop_1, \*pop_2)
+- ```$``` - assign and push heap array
 - ```$<array>``` - assign heap array\[pop_1\]
 - ```@<array>``` - assign static array\[pop_1\]
 - ```#<function> <commands> \``` - declare function (same as define)

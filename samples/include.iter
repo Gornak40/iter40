@@ -1,7 +1,7 @@
 ,algolymp
 
 \read =n n $arr
-arr n ()read_array
+78 arr n ()read_array
 arr 1 -> \copy 1 <- <->
 n -- -1 arr 1 -> \mset
 arr n ()radix_sort

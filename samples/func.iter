@@ -1,4 +1,9 @@
-\read =n
-n \bcnt \post
-n \bclz \post
-n \bctz \post
+,algolymp
+
+\read =n n $arr
+n
+-1
+arr \mset arr n ()print_array
+n $brr
+n arr brr \mcpy
+brr n ()print_array
