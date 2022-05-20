@@ -143,6 +143,22 @@
 	\
 \
 
+#__merge_arr \copy i []arr {}. 1 -> i ++ =i \
+#__merge_brr \copy j []brr {}. 1 -> j ++ =j \
+
+.merge
+	:crr :m :brr :n :arr
+	0 :i 0 :j
+	crr
+	\iter
+		i n == j m == \drop \back \ \
+		i n == \__merge_brr \jump \
+		j m == \__merge_arr \jump \
+		i []arr j []brr < \__merge_arr \jump \
+		\__merge_brr
+	\
+\
+
 `search_block
 .find
 	:x :n :arr
