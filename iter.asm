@@ -151,6 +151,19 @@ popcnt ebx, eax
 push ebx
 %endmacro
 
+%macro @bclz 0
+pop ebx
+bsr eax, ebx
+xor eax, 31
+push eax
+%endmacro
+
+%macro @bctz 0
+pop ebx
+bsf eax, ebx
+push eax
+%endmacro
+
 ; (a, b)
 %macro @add 0
 pop ebx

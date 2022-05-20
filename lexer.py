@@ -23,8 +23,8 @@ tokens = {
 	'MCPY': r'\\mcpy',
 	'BCNT': r'\\bcnt',
 	'DUMP': r'\\dump',
-#	'BCLZ': r'\\bclz',
-#	'BCTZ': r'\\bctz',
+	'BCLZ': r'\\bclz',
+	'BCTZ': r'\\bctz',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 

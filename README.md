@@ -20,7 +20,9 @@
 - ```\post``` - print(pop_1)
 - ```\mset``` - memset(pop_1, pop_2, pop_3 * sizeof(int))
 - ```\mcpy``` - memcpy(pop_1, pop_2, pop_3 * sizeof(int))
-- ```\bcnt``` - \_\_builtin_popcount(pop_1)
+- ```\bcnt``` - push(\_\_builtin_popcount(pop_1))
+- ```\bclz``` - push(\_\_builtin_clz(pop_1))
+- ```\bctz``` - push(\_\_builtin_ctz(pop_1))
 - ```\dump``` - pop pop_2 values to \*pop_1
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1

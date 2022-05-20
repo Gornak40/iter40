@@ -1,5 +1,3 @@
-
-
 .popcount
 	:n 0
 	\iter
@@ -29,4 +27,7 @@
 	\
 \
 
-\read \read ()gcd \post
+\read
+\copy \bcnt \post
+\copy \bclz \post
+\copy \bctz \post
