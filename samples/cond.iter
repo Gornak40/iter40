@@ -1,9 +1,6 @@
 ,algolymp
 
-\read =n n $arr n $brr
+\read =n n $arr
 arr n ()read_array
-brr n ()read_array
-n *2 $crr
-arr n brr n crr ()merge
-crr n *2 ()print_array
-crr \free
+arr n ()merge_sort
+arr n ()print_array
