@@ -63,8 +63,9 @@
 - ```()fill``` - arr n x
 - ```()partial_sum``` - arr n ps
 - ```()reverse``` - arr n
-- ```()radix_sort``` - arr n
+- ```()bubble_sort``` - arr n
 - ```()merge``` - arr n brr n crr
+- ```()merge_sort``` - arr n
 
 #### Search
 - ```()find``` - arr n x

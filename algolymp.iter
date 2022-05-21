@@ -71,49 +71,7 @@
 	\
 \
 
-`csud
-.__radix_sort
-	:i :n :arr
-	n ! \back \
-	0 :pt
-	0
-	\iter
-		\copy n == \drop \halt \
-		\copy []arr   1 i <<  &  !
-			pt []arr
-			\prev []arr  pt  arr{}
-			\prev arr{} 
-			pt ++ :pt
-		\
-		++
-	\
-	i ! \back \
-	arr  pt  i --  ()__radix_sort
-	arr pt ->  n pt -  i -- ()__radix_sort
-\
-
-`csud
-.radix_sort
-	:n :arr
-	arr n ()min_element :mel
-	0
-	\iter
-		\copy n == \drop \halt \
-		\copy []arr mel - \prev arr{}
-		++
-	\
-
-	arr n 31 ()__radix_sort
-
-	0
-	\iter
-		\copy n == \drop \halt \
-		\copy []arr mel + \prev arr{}
-		++
-	\
-\
-
-.buble_sort
+.bubble_sort
 	:n :arr
 	0
 	\iter
@@ -149,7 +107,7 @@
 .__merge_sort
 	:r :l :arr
 	r l - 6 <
-		arr l -> r l - ()buble_sort \back
+		arr l -> r l - ()bubble_sort \back
 	\
 	l r + /2 :mid
 	arr l mid ()__merge_sort
