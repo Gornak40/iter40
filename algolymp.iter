@@ -48,36 +48,6 @@
 	\
 \
 
-.accumulate
-	:n :arr
-	0
-	\iter
-		n ! \halt \
-		n -- :n
-		n []arr +
-	\
-\
-
-.min_element
-	:n :arr
-	INF
-	\iter
-		n ! \halt \
-		n -- :n
-		n []arr \min
-	\
-\
-
-.max_element
-	:n :arr
-	-INF
-	\iter
-		n ! \halt \
-		n -- :n
-		n []arr \max
-	\
-\
-
 .partial_sum
 	:ps :n :arr
 	0 []arr 0 ps{}
@@ -189,6 +159,46 @@
 		l r + /2 :mid
 		mid []arr x <= mid :l \
 		\else mid :r \
+	\
+\
+
+.count
+	:x :n :arr
+	0
+	\iter
+		n ! \halt \
+		n -- =n
+		n []arr x == ++ \
+	\
+\
+
+.accumulate
+	:n :arr
+	0
+	\iter
+		n ! \halt \
+		n -- :n
+		n []arr +
+	\
+\
+
+.min_element
+	:n :arr
+	INF
+	\iter
+		n ! \halt \
+		n -- :n
+		n []arr \min
+	\
+\
+
+.max_element
+	:n :arr
+	-INF
+	\iter
+		n ! \halt \
+		n -- :n
+		n []arr \max
 	\
 \
 

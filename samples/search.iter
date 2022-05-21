@@ -1,14 +1,10 @@
 ,algolymp
 
 \read =n n $arr
-0
-\iter
-	\copy n == \drop \halt \
-	\read \copy arr{}
-	++
-\
+arr n ()read_array
 \read =x
 
 arr n x ()find \post
 arr n x ()lower_bound \post
 arr n x ()upper_bound \post
+arr n x ()count \post
