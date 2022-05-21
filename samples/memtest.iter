@@ -1,9 +1,3 @@
-\read =n n $arr n $brr
-n -1 arr \mset
-n arr brr \mcpy
-0 =i
 \iter
-	i n == \halt \
-	i []brr \post
-	i ++ =i
+	1000 $ \free
 \

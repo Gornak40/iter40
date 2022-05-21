@@ -25,6 +25,7 @@ tokens = {
 	'DUMP': r'\\dump',
 	'BCLZ': r'\\bclz',
 	'BCTZ': r'\\bctz',
+	'FREE': r'\\free',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 

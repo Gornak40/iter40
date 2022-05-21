@@ -7,6 +7,7 @@ global main
 extern printf
 extern scanf
 extern malloc
+extern free
 extern memset
 extern memcpy
 
@@ -110,6 +111,11 @@ shl dword [esp], 2
 call malloc
 add esp, 4
 mov dword [%1], eax
+%endmacro
+
+%macro @free 0
+call free
+add esp, 4
 %endmacro
 
 %macro @mset 0

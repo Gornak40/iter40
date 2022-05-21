@@ -6,3 +6,4 @@ brr n ()read_array
 n *2 $crr
 arr n brr n crr ()merge
 crr n *2 ()print_array
+crr \free

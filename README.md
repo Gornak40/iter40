@@ -24,6 +24,7 @@
 - ```\bclz``` - push(\_\_builtin_clz(pop_1))
 - ```\bctz``` - push(\_\_builtin_ctz(pop_1))
 - ```\dump``` - pop pop_2 values to \*pop_1
+- ```\free``` - free(pop_1)
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1
