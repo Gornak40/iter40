@@ -151,6 +151,14 @@ shl dword [esp], 1
 shr dword [esp], 1
 %endmacro
 
+%macro @incptr 0
+add dword [esp], 4
+%endmacro
+
+%macro @decptr 0
+sub dword [esp], 4
+%endmacro
+
 %macro @bcnt 0
 pop eax
 popcnt ebx, eax

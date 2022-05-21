@@ -2,5 +2,5 @@
 
 \read =n n $arr
 arr n ()read_array
-arr n ()merge_sort
-arr n ()print_array
+arr ++. n -- ()merge_sort
+arr ++. --. n ()print_array

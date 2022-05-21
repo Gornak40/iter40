@@ -58,6 +58,8 @@ tokens = {
 	'NOT': r'~',
 	'MUL2': r'\*2',
 	'DIV2': r'/2',
+	'INCPTR': r'\+\+\.',
+	'DECPTR': r'--\.',
 
 	'ADD': r'\+',
 	'SUB': r'-',
