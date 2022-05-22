@@ -148,7 +148,7 @@ shl dword [esp], 1
 %endmacro
 
 %macro @div2 0
-shr dword [esp], 1
+sar dword [esp], 1
 %endmacro
 
 %macro @incptr 0
@@ -196,6 +196,7 @@ imul ebx
 push eax
 %endmacro
 
+; not working for negative number
 %macro @div 0
 xor edx, edx
 pop ebx

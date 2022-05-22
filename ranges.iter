@@ -1,0 +1,121 @@
+.read_array
+	:n :arr
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy \read {}arr
+		++
+	\
+\
+
+.print_array
+	:n :arr
+	0
+	\iter
+		\copy n == \drop \halt \
+		\copy []arr \post
+		++
+	\
+\
+
+.fill
+	:x :n :arr
+	n
+	\iter
+		\copy ! \halt \
+		-- \copy x {}arr
+	\
+\
+
+.partial_sum
+	:ps :n :arr
+	0 []arr 0 ps{}
+	1
+	\iter
+		\copy n == \halt \
+		\copy []arr \prev -- []ps + \prev ps{}
+		++ 
+	\
+\
+
+`csud
+.reverse
+	:n :arr
+	0
+	\iter
+		\copy n /2 == \drop \back \
+		n -- \prev - []arr
+		n -- \prew - \prew []arr {}arr
+		\prev arr{}
+		++
+	\
+\
+
+.bubble_sort
+	:n :arr
+	0
+	\iter
+		\copy n -- == \drop \halt \
+		0 :j
+		\iter
+			n \prev - -- j == \halt \
+			j []arr j ++ []arr >
+				arr j -> \copy 1 -> <->
+			\
+			j ++ =j
+		\
+		++
+	\
+\
+
+#__merge_arr \copy i []arr {}. 1 -> i ++ =i \
+#__merge_brr \copy j []brr {}. 1 -> j ++ =j \
+
+.merge
+	:crr :m :brr :n :arr
+	0 :i 0 :j
+	crr
+	\iter
+		i n == j m == \drop \back \ \
+		i n == \__merge_brr \jump \
+		j m == \__merge_arr \jump \
+		i []arr j []brr < \__merge_arr \jump \
+		\__merge_brr
+	\
+\
+
+.__merge_sort
+	:r :l :arr
+	r l - 6 <
+		arr l -> r l - ()bubble_sort \back
+	\
+	l r + /2 :mid
+	arr l mid ()__merge_sort
+	arr mid r ()__merge_sort
+	r l - \copy $ :brr
+	arr l -> mid l - arr mid -> r mid - brr ()merge
+	brr arr l -> \mcpy
+	brr \free
+\
+
+.merge_sort
+	:n :arr
+	arr 0 n ()__merge_sort
+\
+
+`csud
+.unique
+	:n :arr
+	arr :ptr_
+	arr n -> :end
+	arr ++.
+	\iter
+		\copy end >= \drop \halt \
+		\copy []. ptr_ []. != 
+			ptr_ ++. :ptr_
+			\copy ptr_ <->
+		\
+		++.
+	\
+	ptr_ arr - /2 /2 ++
+\

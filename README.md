@@ -51,13 +51,13 @@
 
 ### Algolymp
 
-#### Func
+#### Functions
 - ```\min``` - a b
 - ```\max``` - a b
 - ```\lson``` - id
 - ```\rson``` - id
 
-#### Range
+#### Ranges
 - ```()read_array``` - arr n
 - ```()print_array``` - arr n
 - ```()fill``` - arr n x
@@ -79,3 +79,5 @@
 #### Numeric
 - ```()gcd``` - a b
 - ```()pow_mod``` - a n mod
+
+### Structures

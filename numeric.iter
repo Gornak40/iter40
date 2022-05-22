@@ -1,0 +1,15 @@
+.gcd
+	:b :a
+	\iter
+		b ! \halt \
+		a b % b :a :b
+	\
+	a
+\
+
+.pow_mod
+	:m :n :a
+	n ! 1 \back \
+	a n /2 m ()pow_mod \copy m *%
+	n 1 & ? a m *% \
+\

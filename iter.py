@@ -4,7 +4,7 @@ from lexer import lexer, LexingError, Token
 from pprint import pprint
 from errors import *
 from token_types import *
-from os import system
+from os import system, path
 
 
 @command(help='ITER compiler made by Gornak40.')
@@ -24,6 +24,7 @@ class Main:
 	ptr = 0
 	label = 0
 	ban = set()
+	include = set()
 
 	def get_label(self, is_func):
 		self.label += 1
@@ -31,6 +32,7 @@ class Main:
 
 	def __init__(self, source, out, stack_size, tokens):
 		self.stack_size = stack_size
+		self.include.add(path.splitext(source.name)[0])
 		self.tokens = list(self.set_include(source))
 		self.check_balance()
 		self.set_assign()
@@ -78,10 +80,13 @@ class Main:
 
 	def set_include(self, source):
 		for token in self.lex(source):
+			name = token.getstr()[1:]
 			if token.gettokentype() == 'INCLUDE':
-				with open(f'{token.getstr()[1:]}.iter') as isource:
-					for itoken in self.set_include(isource):
-						yield itoken
+				if name not in self.include:
+					self.include.add(name)
+					with open(f'{name}.iter') as isource:
+						for itoken in self.set_include(isource):
+							yield itoken
 			else:
 				yield token
 
