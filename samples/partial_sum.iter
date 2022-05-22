@@ -1,22 +1,9 @@
-\read =n n $arr n ++ $ps
-0 0 {}ps 0 =i
-\iter
-	i n == \halt \
-	\read i arr{}
-	i ++ =i
-\
+,algolymp
 
-0 =i
+\trie_init =trie
 \iter
-	i n == \halt \
-	i []arr i []ps +	i ++ ps{}
-	i ++ =i
-\
-
-\read =t
-\iter
-	t ! \halt \
-	\read -- =l \read =r
-	r []ps l []ps - \post
-	t -- =t
+	\read =t \read =val
+	t 1 == trie val ()trie_insert \
+	\else trie val ()trie_erase \
+	trie val ()trie_count \post
 \

@@ -1,0 +1,41 @@
+4 =SYSTRIEBITS
+16 =SYSTRIEBITSPOW
+15 =SYSTRIEMASK
+7 =SYSTRIEITER
+
+#__trie__node_alloc SYSTRIEBITSPOW $ \
+#__trie__node_nullptr \copy ! \drop \__trie__node_alloc \ \
+
+#trie_init
+	\__trie__node_alloc
+\
+
+.__trie__get_node
+	:val :node
+	0
+	\iter
+		\copy SYSTRIEITER == \drop \halt \
+		node val SYSTRIEMASK & -> :node
+		node []. \__trie__node_nullptr node .{}
+		node []. :node
+
+		val SYSTRIEBITS >> :val
+		++
+	\
+	node val SYSTRIEMASK & ->
+\
+
+.trie_insert
+	:val :node
+	1 node val ()__trie__get_node .{}
+\
+
+.trie_erase
+	:val :node
+	0 node val ()__trie__get_node .{}
+\
+
+.trie_count
+	:val :node
+	node val ()__trie__get_node [].
+\

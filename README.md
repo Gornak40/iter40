@@ -52,32 +52,37 @@
 ### Algolymp
 
 #### Functions
-- ```\min``` - a b
-- ```\max``` - a b
-- ```\lson``` - id
-- ```\rson``` - id
+- ```\min``` - a b -> min
+- ```\max``` - a b -> max
+- ```\lson``` - id -> lson
+- ```\rson``` - id -> rson
 
 #### Ranges
-- ```()read_array``` - arr n
-- ```()print_array``` - arr n
-- ```()fill``` - arr n x
-- ```()partial_sum``` - arr n ps
-- ```()reverse``` - arr n
-- ```()bubble_sort``` - arr n
-- ```()merge``` - arr n brr n crr
-- ```()merge_sort``` - arr n
+- ```()read_array``` - arr n ->
+- ```()print_array``` - arr n ->
+- ```()fill``` - arr n x ->
+- ```()partial_sum``` - arr n ps ->
+- ```()reverse``` - arr n ->
+- ```()bubble_sort``` - arr n ->
+- ```()merge``` - arr n brr n crr ->
+- ```()merge_sort``` - arr n ->
+- ```()unique``` - arr n -> new_n
 
 #### Search
-- ```()find``` - arr n x
-- ```()lower_bound``` - arr n x
-- ```()upper_bound``` - arr n x
-- ```()count``` - arr n x
-- ```()accumulate``` - arr n
-- ```()min_element``` - arr n
-- ```()max_element``` - arr n
+- ```()find``` - arr n x -> pos
+- ```()lower_bound``` - arr n x -> pos
+- ```()upper_bound``` - arr n x -> pos
+- ```()count``` - arr n x -> cnt
+- ```()accumulate``` - arr n -> sum
+- ```()min_element``` - arr n -> min
+- ```()max_element``` - arr n -> max
 
 #### Numeric
-- ```()gcd``` - a b
-- ```()pow_mod``` - a n mod
+- ```()gcd``` - a b -> gcd
+- ```()pow_mod``` - a n mod -> res
 
 ### Structures
+- ```\trie_init``` - -> trie
+- ```()trie_insert``` - trie x ->
+- ```()trie_erase``` - trie x ->
+- ```()trie_count``` - trie x -> cnt
