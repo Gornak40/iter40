@@ -41,13 +41,13 @@
 `csud
 .reverse
 	:n :arr
-	0
+	arr n -- -> :r
+	arr
 	\iter
-		\copy n /2 == \drop \back \
-		n -- \prev - []arr
-		n -- \prew - \prew []arr {}arr
-		\prev arr{}
-		++
+		\copy r >= \drop \back \
+		\copy r <->
+		++.
+		r --. :r
 	\
 \
 

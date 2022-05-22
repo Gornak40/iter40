@@ -3,13 +3,17 @@
 15 =SYSTRIEMASK
 7 =SYSTRIEITER
 
+`csud
 #__trie__node_alloc SYSTRIEBITSPOW $ \
+`csud
 #__trie__node_nullptr \copy ! \drop \__trie__node_alloc \ \
 
+`csud
 #trie_init
 	\__trie__node_alloc
 \
 
+`csud
 .__trie__get_node
 	:val :node
 	0
@@ -25,16 +29,19 @@
 	node val SYSTRIEMASK & ->
 \
 
+`csud
 .trie_insert
 	:val :node
 	1 node val ()__trie__get_node .{}
 \
 
+`csud
 .trie_erase
 	:val :node
 	0 node val ()__trie__get_node .{}
 \
 
+`csud
 .trie_count
 	:val :node
 	node val ()__trie__get_node [].
