@@ -37,6 +37,7 @@ tokens = {
 
 	'NUM': r'-?\d+',
 	'GETVAR': rf'{vartemp}',
+	'GETADDR': rf';{vartemp}',
 	'GETCONST': rf'{consttemp}',
 	'SETVAR': rf'={vartemp}',
 	'SETLVAR': rf':{vartemp}',

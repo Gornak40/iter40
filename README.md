@@ -4,6 +4,7 @@
 ### Standard ITER40
 - ```<number>``` - push(number)
 - ```<variable>``` - push(variable)
+- ```;<variable>``` - push(&variable)
 - ```<constant>``` - push(constant)
 - ```[].``` - push(\*pop_1)
 - ```[]<array>``` - push(array\[pop_1\])
@@ -51,11 +52,13 @@
 
 ### Algolymp
 
-#### Functions
+#### Numeric
 - ```\min``` - a b -> min
 - ```\max``` - a b -> max
 - ```\lson``` - id -> lson
 - ```\rson``` - id -> rson
+- ```()gcd``` - a b -> gcd
+- ```()pow_mod``` - a n mod -> res
 
 #### Ranges
 - ```()read_array``` - arr n ->
@@ -77,9 +80,7 @@
 - ```()min_element``` - arr n -> min
 - ```()max_element``` - arr n -> max
 
-#### Numeric
-- ```()gcd``` - a b -> gcd
-- ```()pow_mod``` - a n mod -> res
+
 
 ### Structures
 - ```\trie_init``` - -> trie

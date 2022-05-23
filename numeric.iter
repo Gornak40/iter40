@@ -1,3 +1,24 @@
+2147483647 =INF
+0 =NULL
+0 =FALSE
+1 =TRUE
+
+#min
+	\prev \prev > \swap \ \drop
+\
+
+#max
+	\prev \prev < \swap \ \drop
+\
+
+#lson
+	*2 1 |
+\
+
+#rson
+	*2 2 +
+\
+
 .gcd
 	:b :a
 	\iter

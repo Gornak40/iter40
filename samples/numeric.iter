@@ -1,8 +1,5 @@
 ,algolymp
 
-1000000007 =MOD 
-\read =a \read =b 
-a b \max \post
-a b \min \post
-a b MOD ()pow_mod \post
-a b ()gcd \post
+5 =a 6 =b
+;a 1 {}.
+a \post

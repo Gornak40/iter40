@@ -32,6 +32,10 @@ push %1
 push dword [%1]
 %endmacro
 
+%macro @getaddr 1
+push %1
+%endmacro
+
 %macro @getconst 1
 push %1
 %endmacro
