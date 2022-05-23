@@ -18,6 +18,7 @@
 - ```\push``` - push(pop_1), push(pop_2), push(pop_1)
 - ```\swap``` - swap(top_1, top_2)
 - ```\drop``` - pop_1
+- ```\kill``` - \\swap \\drop
 - ```\post``` - print(pop_1)
 - ```\mset``` - memset(pop_1, pop_2, pop_3 * sizeof(int))
 - ```\mcpy``` - memcpy(pop_1, pop_2, pop_3 * sizeof(int))
@@ -57,6 +58,7 @@
 - ```\max``` - a b -> max
 - ```\lson``` - id -> lson
 - ```\rson``` - id -> rson
+- ```\upper_2``` - a -> pow
 - ```()gcd``` - a b -> gcd
 - ```()pow_mod``` - a n mod -> res
 

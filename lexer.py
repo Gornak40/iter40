@@ -13,6 +13,7 @@ tokens = {
 	'PUSH': r'\\push',
 	'SWAP': r'\\swap',
 	'DROP': r'\\drop',
+	'KILL': r'\\kill',
 	'POST': r'\\post',
 	'ITER': r'\\iter',
 	'HALT': r'\\halt',

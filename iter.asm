@@ -305,6 +305,11 @@ push ebx
 add esp, 4
 %endmacro
 
+%macro @kill 0
+pop eax
+mov dword [esp], eax
+%endmacro
+
 %macro @post 0
 push dword @formatout
 call printf

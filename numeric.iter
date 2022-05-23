@@ -4,11 +4,11 @@
 1 =TRUE
 
 #min
-	\prev \prev > \swap \ \drop
+	\prev \prev > \kill \ \else \drop \
 \
 
 #max
-	\prev \prev < \swap \ \drop
+	\prev \prev < \kill \ \else \drop \
 \
 
 #lson
@@ -17,6 +17,10 @@
 
 #rson
 	*2 2 +
+\
+
+#upper_2
+	1 32 \prew \bclz - << \kill
 \
 
 .gcd

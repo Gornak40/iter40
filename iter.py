@@ -34,11 +34,11 @@ class Main:
 		self.stack_size = stack_size
 		self.include.add(path.splitext(source.name)[0])
 		self.tokens = list(self.set_include(source))
+		pprint(self.tokens) if tokens else None
 		self.check_balance()
 		self.set_assign()
 		self.set_bss()
 		self.text = list(self.set_text())
-		pprint(self.tokens) if tokens else None
 		self.build(out)
 
 	def build(self, out):
