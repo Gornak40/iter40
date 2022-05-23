@@ -15,7 +15,8 @@
 - ```\copy``` - push(top_1)
 - ```\prev``` - push(top_2)
 - ```\prew``` - push(top_3)
-- ```\push``` - push(pop_1), push(pop_2), push(pop_1)
+- ```\push``` - push(pock)
+- ```\pock``` - pock = pop_1
 - ```\swap``` - swap(top_1, top_2)
 - ```\drop``` - pop_1
 - ```\kill``` - \\swap \\drop

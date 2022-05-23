@@ -11,6 +11,7 @@ tokens = {
 	'PREV': r'\\prev',
 	'PREW': r'\\prew',
 	'PUSH': r'\\push',
+	'POCK': r'\\pock',
 	'SWAP': r'\\swap',
 	'DROP': r'\\drop',
 	'KILL': r'\\kill',

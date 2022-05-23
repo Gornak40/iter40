@@ -294,11 +294,11 @@ push eax
 %endmacro
 
 %macro @push 0
-pop ebx
-pop eax
-push ebx
-push eax
-push ebx
+push edi
+%endmacro
+
+%macro @pock 0
+pop edi
 %endmacro
 
 %macro @drop 0

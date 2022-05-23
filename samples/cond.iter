@@ -1,5 +1,7 @@
 ,algolymp
 
+5 6 \pock 7 + \push * \post
+
 \read =n n $arr
 arr n ()read_array
 arr n ()merge_sort
