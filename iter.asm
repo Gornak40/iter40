@@ -12,6 +12,90 @@ extern memset
 extern memcpy
 extern memcmp
 
+; avx2
+%macro @avx2_add 0
+pop eax
+vmovdqu ymm1, [eax]
+vpaddd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_sub 0
+pop eax
+vmovdqu ymm1, [eax]
+vpsubd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_mul 0
+pop eax
+vmovdqu ymm1, [eax]
+vpmulld ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_xor 0
+pop eax
+vmovdqu ymm1, [eax]
+vpxor ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_and 0
+pop eax
+vmovdqu ymm1, [eax]
+vpand ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_or 0
+pop eax
+vmovdqu ymm1, [eax]
+vpor ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_min 0
+pop eax
+vmovdqu ymm1, [eax]
+vpminsd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_max 0
+pop eax
+vmovdqu ymm1, [eax]
+vpmaxsd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_cmpeq 0
+pop eax
+vmovdqu ymm1, [eax]
+vpcmpeqd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_cmpgt 0
+pop eax
+vmovdqu ymm1, [eax]
+vpcmpgtd ymm0, ymm0, ymm1
+%endmacro
+
+%macro @avx2_load 0
+pop eax
+vmovdqu ymm0, [eax]
+%endmacro
+
+%macro @avx2_store 0
+pop eax
+vmovdqu [eax], ymm0
+%endmacro
+
+%macro @avx2_set1 0
+pop eax
+mov dword [@AVX2], eax
+mov dword [@AVX2 + 4], eax
+mov dword [@AVX2 + 8], eax
+mov dword [@AVX2 + 12], eax
+mov dword [@AVX2 + 16], eax
+mov dword [@AVX2 + 20], eax
+mov dword [@AVX2 + 24], eax
+mov dword [@AVX2 + 28], eax
+vmovdqu ymm0, [@AVX2]
+%endmacro
+
 ; system
 %macro @start 0
 mov ebp, esp

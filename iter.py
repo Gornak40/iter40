@@ -100,6 +100,7 @@ class Main:
 
 	def set_bss(self):
 		self.bss.append(f'@MEM40: resd {self.stack_size}')
+		self.bss.append(f'@AVX2: resd 8')
 		for i, (ptoken, token) in enumerate(zip(self.tokens, self.tokens[1:])):
 			name = token.getstr()[1:]
 			if token.gettokentype() in BSS:

@@ -55,6 +55,21 @@
 - ```\<function>``` - function()
 - ```()<sunction>``` - sunction()
 
+### AVX2 extention
+- ```\avx2_add``` - ymm0 = \_mm256_add_epi32(ymm0, pop_1)
+- ```\avx2_sub``` - ymm0 = \_mm256_sub_epi32(ymm0, pop_1)
+- ```\avx2_mul``` - ymm0 = \_mm256_mullo_epi32(ymm0, pop_1)
+- ```\avx2_xor``` - ymm0 = \_mm256_xor_si256(ymm0, pop_1)
+- ```\avx2_and``` - ymm0 = \_mm256_add_si256(ymm0, pop_1)
+- ```\avx2_or``` - ymm0 = \_mm256_or_si256(ymm0, pop_1)
+- ```\avx2_min``` - ymm0 = \_mm256_min_epi32(ymm0, pop_1)
+- ```\avx2_max``` - ymm0 = \_mm256_max_epi32(ymm0, pop_1)
+- ```\avx2_cmpeq``` - ymm0 = \_mm256_cmpeq_epi32(ymm0, pop_1)
+- ```\avx2_cmpgt``` - ymm0 = \_mm256_cmpgt_epi32(ymm0, pop_1)
+- ```\avx2_load``` - \_mm256_loadu_si256(ymm0, pop_1)
+- ```\avx2_store``` - \_mm256_storeu_si256(pop_1, ymm0)
+- ```\avx2_set1``` - ymm0 = \_mm256_set1_epi32(pop_1)
+
 ### Algolymp
 
 #### Numeric
@@ -85,8 +100,6 @@
 - ```()accumulate``` - arr n -> sum
 - ```()min_element``` - arr n -> min
 - ```()max_element``` - arr n -> max
-
-
 
 ### Structures
 - ```\trie_init``` - -> trie
