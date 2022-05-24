@@ -11,7 +11,8 @@ tokens = {
 	'PREV': r'\\prev',
 	'PREW': r'\\prew',
 	'PUSH': r'\\push',
-	'POCK': r'\\pock',
+	'SAVE': r'\\save',
+	'PICK': r'\\pick',
 	'SWAP': r'\\swap',
 	'DROP': r'\\drop',
 	'KILL': r'\\kill',
@@ -28,6 +29,8 @@ tokens = {
 	'BCLZ': r'\\bclz',
 	'BCTZ': r'\\bctz',
 	'FREE': r'\\free',
+	'MINC': r'\\minc',
+	'MDEC': r'\\mdec',
 	'FUNC': rf'\\{vartemp}',
 	'SUNC': rf'\(\){vartemp}',
 

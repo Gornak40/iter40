@@ -297,7 +297,11 @@ push eax
 push edi
 %endmacro
 
-%macro @pock 0
+%macro @save 0
+mov edi, dword [esp]
+%endmacro
+
+%macro @pick 0
 pop edi
 %endmacro
 
@@ -328,6 +332,16 @@ call memcpy
 add esp, 8
 pop ecx
 add esp, ecx
+%endmacro
+
+%macro @minc 0
+pop eax
+inc dword [eax]
+%endmacro
+
+%macro @mdec 0
+pop eax
+dec dword [eax]
 %endmacro
 
 ; conditions

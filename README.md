@@ -15,8 +15,9 @@
 - ```\copy``` - push(top_1)
 - ```\prev``` - push(top_2)
 - ```\prew``` - push(top_3)
-- ```\push``` - push(pock)
-- ```\pock``` - pock = pop_1
+- ```\push``` - push(pocket)
+- ```\save``` - pocket = top_1
+- ```\pick``` - pocket = pop_1
 - ```\swap``` - swap(top_1, top_2)
 - ```\drop``` - pop_1
 - ```\kill``` - \\swap \\drop
@@ -28,6 +29,8 @@
 - ```\bctz``` - push(\_\_builtin_ctz(pop_1))
 - ```\dump``` - pop pop_2 values to \*pop_1
 - ```\free``` - free(pop_1)
+- ```\minc``` - \*pop_1++
+- ```\mdec``` - \*pop_1--
 - ```=<variable>``` - variable = pop_1
 - ```:<variable>``` - local variable = pop_1
 - ```=<constant>``` - define constant pop_1

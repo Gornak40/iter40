@@ -1,0 +1,25 @@
+#vect_init
+	\copy ++ \upper_2 $ \save .{} \push ++.
+\
+
+#vect_size
+	--. [].
+\
+
+#vect_alloc
+	$ \pick \copy []. --.
+	\copy []. ++ \prev \push \mcpy
+	\free \push ++. {}.
+\
+
+#vect_push
+	\copy []. --. [].
+	\copy \copy ++ & !
+		\prev \prev ++ *2 \vect_alloc
+	\
+	\prev []. --. \copy \copy \minc []. -> \prev {}.
+\
+
+#vect_pop
+	--. \copy []. -- {}.
+\
