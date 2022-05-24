@@ -1,2 +1,7 @@
 ,algolymp
 
+\read =n n $arr n $brr
+arr n ()read_array
+brr n ()read_array
+
+n brr arr \mcmp \post

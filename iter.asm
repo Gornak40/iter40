@@ -10,6 +10,7 @@ extern malloc
 extern free
 extern memset
 extern memcpy
+extern memcmp
 
 ; system
 %macro @start 0
@@ -132,6 +133,13 @@ add esp, 12
 shl dword [esp + 8], 2
 call memcpy
 add esp, 12
+%endmacro
+
+%macro @mcmp 0
+shl dword [esp + 8], 2
+call memcmp
+add esp, 12
+push eax
 %endmacro
 
 ; (a)

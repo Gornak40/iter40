@@ -24,6 +24,7 @@ tokens = {
 	'BACK': r'\\back',
 	'MSET': r'\\mset',
 	'MCPY': r'\\mcpy',
+	'MCMP': r'\\mcmp',
 	'BCNT': r'\\bcnt',
 	'DUMP': r'\\dump',
 	'BCLZ': r'\\bclz',
